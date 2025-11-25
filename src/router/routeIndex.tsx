@@ -35,6 +35,7 @@ import ComponentTesterPage from "../pages/ComponentTesterPage/ComponentTesterPag
 import MscAlphabeticPagerPage from "../pages/AlphabeticPager/MscAlphabeticPagerPage";
 import ChangeLog from "../pages/ChangeLog/ChangeLog";
 import ArchitectureFlow from "../pages/ArchitectureFlow/ArchitectureFlow";
+import EcosystemPage from "../pages/EcosystemPage/EcosystemPage";
 
 export const routesIndex = [
   {
@@ -189,6 +190,10 @@ export const routesIndex = [
       {
         path: "ArchitectureFlow",
         element: <ArchitectureFlow />,
+      },
+      {
+        path: "Ecosystem",
+        element: <EcosystemPage />,
       },
     ],
   },
