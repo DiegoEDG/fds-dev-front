@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { data } from "./data";
-import ecosystem from "../../assets/ecosystem.svg";
-import ecosystemMobile from "../../assets/ecosystem-mobile.svg";
 interface Module {
   name: string;
   icon: string;
