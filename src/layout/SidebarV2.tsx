@@ -12,6 +12,13 @@ import {
   faLayerGroup,
   faPlus,
   faMinus,
+  faBolt,
+  faClipboardList,
+  faLightbulb,
+  faColumns,
+  faCompass,
+  faWindowRestore,
+  faListUl,
 } from "@fortawesome/free-solid-svg-icons";
 
 import SidebarContext from "../context/SidebarCtx";
@@ -123,9 +130,9 @@ const SidebarV2: React.FC = () => {
     const isOpen = openCategories.includes(groupId);
 
     return (
-      <div className={`mb-3 ${indent ? "ml-0" : ""}`}>
+      <div className={`mb-2 ${indent ? "ml-0" : ""}`}>
         <div
-          className="flex items-center gap-1 mb-2 cursor-pointer group select-none pr-2"
+          className="flex items-center gap-1 cursor-pointer group select-none pr-2"
           onClick={() => toggleCategory(groupId)}
         >
           {icon && (
@@ -163,6 +170,20 @@ const SidebarV2: React.FC = () => {
         return faFileCode;
       case "Components": 
         return faCog;
+      case "Action":
+        return faBolt;
+      case "Form":
+        return faClipboardList;
+      case "Indicator":
+        return faLightbulb;
+      case "Layout":
+        return faColumns;
+      case "Navigation":
+        return faCompass;
+      case "Overlay":
+        return faWindowRestore;
+      case "Collection":
+        return faListUl;
       default:
         return faLayerGroup;
     }
@@ -219,7 +240,8 @@ const SidebarV2: React.FC = () => {
           isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }
         flex flex-col overflow-y-auto h-full pl-5 pt-8 text-base border-r border-gray-100/50 shadow-sm
-      `}
+      pr-5
+        `}
     >
       {/* 🚀 Start Here */}
       <SidebarGroup
