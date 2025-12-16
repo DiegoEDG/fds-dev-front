@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Fuel Design System** is a meticulously crafted, modern, and responsive design system engineered to power the company's expanding suite of products. It offers a centralized and intuitive platform to seamlessly track, update, and analyze the status of design components across diverse platforms. By fostering design consistency and streamlining development workflows, Fuel ensures a cohesive and efficient product lifecycle.
+**Fuel Design System** is a meticulously crafted, modern, and responsive design system engineered to power the company's expanding suite of products. It offers a centralized and intuitive platform to seamlessly track, update, and analyze the status of design components across diverse platforms. By fostering design consistency and streamlining development workflows, Fuel ensures a cohesive and efficient product lifecycle..
 
 ## 🔥 Key Features
 
