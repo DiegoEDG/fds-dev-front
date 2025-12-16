@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
 import { updateField, resetForm, IFormState, setComponentData } from '../redux/slices/formSlice';
+import { setCurrentComponent } from '../redux/slices/currentComponentSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { IComponentApi } from '../interfaces/component.interface';
@@ -177,6 +178,22 @@ const ModalForm: React.FC<ModalFormProps> = ({
 
 		if (response.payload && response.payload.id !== 0) {
 			showToast('success', `Component ${actionType}`);
+
+			if (!isNewComponent) {
+				const updatedComponent: any = {
+					...selectedRecord,
+					...componentCasted,
+					statuses: [
+						{
+							guidelines: formState.guidelines,
+							figma: formState.figma,
+							storybook: formState.storybook,
+							cdn: formState.cdn
+						}
+					]
+				};
+				dispatch(setCurrentComponent(updatedComponent));
+			}
 		}
 
 		closeModalWithAnimation();
