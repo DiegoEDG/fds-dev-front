@@ -69,7 +69,7 @@ const SidebarV2: React.FC = () => {
   ) => (
     <NavLink
       to={navToPath}
-      onClick={(e) => {
+      onClick={() => {
         toggleSidebar();
         if (comp) dispatch(setCurrentComponent(comp));
       }}
