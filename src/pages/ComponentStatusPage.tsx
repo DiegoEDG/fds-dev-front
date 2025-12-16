@@ -32,6 +32,7 @@ const defaultValuesEmpty = {
       cdn: "",
     },
   ],
+  atomicType: null,
 };
 
 const ComponentStatus: React.FC = () => {
