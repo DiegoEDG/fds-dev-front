@@ -17,6 +17,7 @@ export interface IComponentApi {
   figmaLink?: string;
   storybookLink?: string;
   image?: string;
+  atomicType: string | null;
 }
 
 export interface ICategoryApi {
@@ -37,4 +38,5 @@ export interface IComponentForm {
   figmaLink?: string;
   storybookLink?: string;
   image?: File | null;
+  atomicType: string | null;
 }

@@ -20,6 +20,7 @@ export const createComponent = async (data: IComponentForm): Promise<AxiosRespon
 		}
 		formData.append('figmaLink', data.figmaLink || '');
 		formData.append('storybookLink', data.storybookLink || '');
+		formData.append('atomicType', data.atomicType || '');
 
 		const response = await axios.post(`${baseUrl}/categories/${data.category}/components`, formData);
 

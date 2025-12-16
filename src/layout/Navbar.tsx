@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center gap-5">
         {isAuthenticated && (
           <Link
-            to={"/docs/notifications"}
+            to={"/docs/Notifications"}
             className="flex flex-col items-center justify-end"
           >
             <FontAwesomeIcon

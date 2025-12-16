@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -25,7 +25,7 @@ import SidebarContext from "../context/SidebarCtx";
 import formatComponentName from "../utils/formatComponentName";
 import { routesIndex } from "../router/routeIndex";
 import { RootState } from "../redux/store";
-import { ICategoryApi, IComponentApi } from "../interfaces/component.interface";
+import { IComponentApi } from "../interfaces/component.interface";
 import { createLinkPage } from "../utils/createLinkPage";
 import { getNavLinkTo } from "../utils/getNavLinkTo";
 import { setCurrentComponent } from "../redux/slices/currentComponentSlice";
@@ -37,29 +37,94 @@ const SidebarV2: React.FC = () => {
 
   const componentsApiData = useSelector((state: RootState) => state.components);
 
-  const [categories, setCategories] = useState<ICategoryApi[] | null>(null);
   const [openCategories, setOpenCategories] = useState<string[]>([]);
-
+  
   const context = useContext(SidebarContext);
   if (!context)
     throw new Error("Sidebar must be used within a SidebarProvider");
 
   const { toggleSidebar, isSidebarOpen } = context;
 
-  useEffect(() => {
-    setCategories(componentsApiData);
-    if (componentsApiData) {
-      setOpenCategories([
-        "Start Here",
-        "Components",
-        "Interaction Units",
-        "View Modules",
-        "Foundations",
-        "Layout",
-        ...componentsApiData.map((c) => c.category),
-      ]);
-    }
+  interface AtomicGroup {
+    id: 'atom' | 'molecule' | 'organism' | 'template' | 'page';
+    title: string;
+    icon: any;
+  }
+
+  // 🧪 Atomic Design Configuration
+  const ATOMIC_GROUPS: AtomicGroup[] = useMemo(() => ([
+    { id: 'atom', title: "Components", icon: faCog },
+    { id: 'molecule', title: "Composite Components", icon: faLayerGroup },
+    { id: 'organism', title: "Interaction Units", icon: faShapes },
+    { id: 'template', title: "Layout Structures", icon: faColumns },
+    { id: 'page', title: "View Modules", icon: faFileCode },
+  ]), []);
+
+  type GroupedDataType = Record<string, { items: IComponentApi[]; subcategories: Record<string, IComponentApi[]> }>;
+
+  // 🔄 Process and Group Data
+  const groupedData = useMemo<GroupedDataType | null>(() => {
+    if (!componentsApiData) return null;
+
+    const groups: GroupedDataType = {
+      atom: { items: [], subcategories: {} },
+      molecule: { items: [], subcategories: {} },
+      organism: { items: [], subcategories: {} },
+      template: { items: [], subcategories: {} },
+      page: { items: [], subcategories: {} },
+    };
+
+    // Helper to normalize atomic type
+    const normalizeAtomicType = (type: string | null | undefined) => {
+      if (!type) return 'atom';
+      const t = type.toLowerCase();
+      if (t.includes('atom')) return 'atom';
+      if (t.includes('molecule')) return 'molecule';
+      if (t.includes('organism')) return 'organism';
+      if (t.includes('template')) return 'template';
+      if (t.includes('page')) return 'page';
+      return 'atom';
+    };
+
+    // Flatten and bucket
+    componentsApiData.forEach((cat) => {
+      cat.components.forEach((comp) => {
+        const type = normalizeAtomicType(comp.atomicType);
+        
+        if (groups[type]) {
+          if (type === 'atom') {
+             // For Atoms (Components), group by original category
+             const subCat = comp.category || 'Uncategorized';
+             if (!groups[type].subcategories[subCat]) {
+                groups[type].subcategories[subCat] = [];
+             }
+             groups[type].subcategories[subCat].push(comp);
+          } else {
+             // For others, add directly to items
+             groups[type].items.push(comp);
+          }
+        }
+      });
+    });
+
+    return groups;
   }, [componentsApiData]);
+
+  // 📂 Open default categories
+  useEffect(() => {
+      if (groupedData) {
+        setOpenCategories((prev) => [
+          ...prev,
+          "Start Here",
+          "Components",
+          "Composite Components",
+          "Interaction Units",
+          "Layout Structures",
+          "View Modules",
+          // Open subcategories for logic if needed, or keep closed to avoid clutter
+        ]);
+      }
+  }, [groupedData]);
 
   const toggleCategory = (category: string) => {
     setOpenCategories((prev) =>
@@ -159,76 +224,25 @@ const SidebarV2: React.FC = () => {
     );
   };
 
-  // Icon Mapping
+  // Icon Mapping for Subcategories (Atoms)
   const getCategoryIcon = (catName: string) => {
     switch (catName) {
-      case "Foundations":
-        return faThLarge;
-      case "Interaction Units":
-        return faShapes;
-      case "View Modules":
-        return faFileCode;
-      case "Components": 
-        return faCog;
-      case "Action":
-        return faBolt;
-      case "Form":
-        return faClipboardList;
-      case "Indicator":
-        return faLightbulb;
-      case "Layout":
-        return faColumns;
-      case "Navigation":
-        return faCompass;
-      case "Overlay":
-        return faWindowRestore;
-      case "Collection":
-        return faListUl;
-      default:
-        return faLayerGroup;
+      case "Foundations": return faThLarge;
+      case "Interaction Units": return faShapes;
+      case "View Modules": return faFileCode;
+      case "Components": return faCog;
+      case "Action": return faBolt;
+      case "Form": return faClipboardList;
+      case "Indicator": return faLightbulb;
+      case "Layout": return faColumns;
+      case "Navigation": return faCompass;
+      case "Overlay": return faWindowRestore;
+      case "Collection": return faListUl;
+      default: return faLayerGroup;
     }
   };
 
-  // Define categories that belong under "Components"
-  const COMPONENT_SUB_CATEGORIES = [
-    "Foundations",
-    "Action",
-    "Form",
-    "Indicator",
-    "Layout",
-    "Navigation",
-    "Overlay",
-    "Collection",
-  ];
-
-  const TOP_LEVEL_ORDER = ["Interaction Units", "View Modules"];
-
-  // Filtering Logic
-  const componentSubgroups = categories?.filter((c) =>
-    COMPONENT_SUB_CATEGORIES.some(
-      (sub) => sub.toLowerCase() === c.category.toLowerCase()
-    )
-  );
-
-  const getTopLevelGroup = (name: string) => {
-    const found = categories?.find((c) => c.category.toLowerCase() === name.toLowerCase());
-    return found || { category: name, components: [] };
-  };
-
-  const interactionUnitsGroup = getTopLevelGroup("Interaction Units");
-  const viewModulesGroup = getTopLevelGroup("View Modules");
-
-  const otherGroups = categories?.filter((c) => {
-    const isComponentSub = COMPONENT_SUB_CATEGORIES.some(
-        (sub) => sub.toLowerCase() === c.category.toLowerCase()
-    );
-    const isExplicitTop = TOP_LEVEL_ORDER.some(
-        (top) => top.toLowerCase() === c.category.toLowerCase()
-    );
-    return !isComponentSub && !isExplicitTop;
-  });
-
-  const hasCategories = (categories?.length ?? 0) > 0;
+  const hasCategories = (groupedData && Object.values(groupedData).some(g => g.items.length > 0 || Object.keys(g.subcategories).length > 0));
 
   return (
     <aside
@@ -257,86 +271,54 @@ const SidebarV2: React.FC = () => {
         ))}
       </SidebarGroup>
 
-      {!hasCategories && <SkeletonMenu />}
+      {!hasCategories && groupedData === null && <SkeletonMenu />}
 
-      {/* ⚙️ Components Group (Parent) */}
-      <SidebarGroup
-          title="Components"
-          icon={faCog}
-          groupId="Components"
-          lineStyle="solid"
-        >
-        {componentSubgroups && componentSubgroups.length > 0 ? (
-          componentSubgroups.map(({ category, components }) => (
-            <SidebarGroup
-              key={category}
-              title={category}
-              icon={getCategoryIcon(category)}
-              groupId={category}
-              lineStyle="dotted"
-              indent
-            >
-              {components
+      {/* ⚛️ Render Atomic Groups */}
+      {groupedData && ATOMIC_GROUPS.map((group) => {
+        const data = groupedData[group.id];
+        if (!data) return null;
+
+        const hasSubcategories = Object.keys(data.subcategories).length > 0;
+        const hasItems = data.items.length > 0;
+        
+        if (!hasSubcategories && !hasItems) return null; // Skip empty groups
+
+        return (
+          <SidebarGroup
+            key={group.id}
+            title={group.title}
+            icon={group.icon}
+            groupId={group.title}
+            lineStyle="solid"
+          >
+             {/* Subcategories (only for Atoms/Components) */}
+             {hasSubcategories && Object.entries(data.subcategories)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([subCatName, comps]) => (
+                  <SidebarGroup
+                      key={subCatName}
+                      title={subCatName}
+                      icon={getCategoryIcon(subCatName)}
+                      groupId={subCatName}
+                      lineStyle="dotted"
+                      indent
+                  >
+                        {comps
+                          .slice()
+                          .sort((a, b) => a.name.localeCompare(b.name))
+                          .map(renderComponentItem)}
+                  </SidebarGroup>
+             ))}
+
+             {/* Direct Items (for other types) */}
+             {hasItems && data.items
                 .slice()
                 .sort((a, b) => a.name.localeCompare(b.name))
-                .map((comp) => renderComponentItem(comp))}
-            </SidebarGroup>
-          ))
-        ) : (
-            // Empty placeholder if needed, or null
-            null
-        )}
-      </SidebarGroup> 
-
-      {/* 🔷 Interaction Units */}
-      <SidebarGroup
-        title={interactionUnitsGroup.category}
-        icon={getCategoryIcon(interactionUnitsGroup.category)}
-        groupId={interactionUnitsGroup.category}
-        lineStyle="solid"
-      >
-        {interactionUnitsGroup.components.length > 0 ? (
-           interactionUnitsGroup.components
-            .slice()
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((comp) => renderComponentItem(comp))
-        ) : (
-             <div className="text-gray-400 text-sm mb-1">Not Found</div>
-        )}
-      </SidebarGroup>
-
-      {/* 📄 View Modules */}
-      <SidebarGroup
-        title={viewModulesGroup.category}
-        icon={getCategoryIcon(viewModulesGroup.category)}
-        groupId={viewModulesGroup.category}
-        lineStyle="solid"
-      >
-        {viewModulesGroup.components.length > 0 ? (
-           viewModulesGroup.components
-            .slice()
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((comp) => renderComponentItem(comp))
-        ) : (
-             <div className="text-gray-400 text-sm mb-1">Not Found</div>
-        )}
-      </SidebarGroup>
-
-      {/* 📂 Other Groups */}
-      {otherGroups?.map(({ category, components }, idx) => (
-        <SidebarGroup
-          key={idx}
-          title={category}
-          icon={getCategoryIcon(category)}
-          groupId={category}
-          lineStyle="solid"
-        >
-          {components
-            .slice()
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((comp) => renderComponentItem(comp))}
-        </SidebarGroup>
-      ))}
+                .map(renderComponentItem)
+             }
+          </SidebarGroup>
+        );
+      })}
 
       {/* Separator */}
       <div className="w-10 border-t border-gray-200 mt-2 mb-6 ml-2"></div>

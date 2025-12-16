@@ -2,7 +2,21 @@ import React, { ReactNode, useState, useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPencil,
+  faThLarge,
+  faShapes,
+  faFileCode,
+  faCog,
+  faBolt,
+  faClipboardList,
+  faLightbulb,
+  faColumns,
+  faCompass,
+  faWindowRestore,
+  faListUl,
+  faLayerGroup,
+} from "@fortawesome/free-solid-svg-icons";
 
 import MscStatusComponentBar from "../../components/MscStatusComponentBar/MscStatusComponentBar";
 import Links from "../../components/Links/Links";
@@ -38,6 +52,7 @@ const DEFAULT_VALUES: IComponentApi = {
   storybookLink: "",
   createdAt: "",
   updatedAt: "",
+  atomicType: "",
   statuses: [
     {
       guidelines: "",
@@ -46,6 +61,36 @@ const DEFAULT_VALUES: IComponentApi = {
       cdn: "",
     },
   ],
+};
+
+// Icon Mapping Helper
+const getCategoryIcon = (catName: string = "") => {
+  switch (catName) {
+    case "Foundations":
+      return faThLarge;
+    case "Interaction Units":
+      return faShapes;
+    case "View Modules":
+      return faFileCode;
+    case "Components":
+      return faCog;
+    case "Action":
+      return faBolt;
+    case "Form":
+      return faClipboardList;
+    case "Indicator":
+      return faLightbulb;
+    case "Layout":
+      return faColumns;
+    case "Navigation":
+      return faCompass;
+    case "Overlay":
+      return faWindowRestore;
+    case "Collection":
+      return faListUl;
+    default:
+      return faLayerGroup;
+  }
 };
 
 /**
@@ -69,9 +114,13 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   const [currentVersion, setCurrentVersion] = useState("V2");
 
   // 🧠 Redux
-  const state = useSelector(
+  const reduxComponent = useSelector(
     (state: RootState) => state.currentComponent.currentComponent
   );
+
+  const locationState = location.state as IComponentApi | null;
+
+  const componentData = locationState ?? reduxComponent;
 
   const {
     id,
@@ -82,7 +131,8 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
     figmaLink,
     storybookLink,
     image,
-  } = state ?? {};
+    atomicType,
+  } = componentData ?? {};
 
   const isWipComponent = useMemo(
     () => location.pathname.split("/").pop() === "Wipcomponent",
@@ -102,10 +152,10 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
   const handleEdit = useCallback(() => {
     if (id) {
-      setSelectedRecord(state as IComponentApi);
+      setSelectedRecord(componentData as IComponentApi);
       toggleModal();
     }
-  }, [id, state, toggleModal]);
+  }, [id, componentData, toggleModal]);
 
   const handleVersionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedVersion = event.target.value;
@@ -114,6 +164,7 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
   return (
     <main
+      key={componentData?.id}
       className={`container mx-auto ${className}`}
       data-testid="component-layout"
     >
@@ -149,6 +200,13 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
           {hasLinks && (
             <Links storybookLink={storybookLink} figmaLink={figmaLink} />
+          )}
+
+          {atomicType && (
+            <div className="flex items-center gap-2 mb-4 text-gray-500">
+              <FontAwesomeIcon icon={getCategoryIcon(category)} className="text-sm" />
+              <span className="text-sm capitalize font-medium">{atomicType}</span>
+            </div>
           )}
 
           <p className="mb-4">

@@ -39,6 +39,7 @@ export const addComponent = createAsyncThunk(
           ],
           createdAt: new Date().toISOString(), // Puedes usar la del backend si la devuelve
           updatedAt: new Date().toISOString(),
+          atomicType: data.atomicType || null
         };
 
         return newComponent;
@@ -133,6 +134,7 @@ export const componentSlice = createSlice({
             ],
             createdAt: "", // Podrías mantener los anteriores si los tienes
             updatedAt: new Date().toISOString(),
+            atomicType: action.payload.atomicType || null
           };
 
           let categoryExists = false;
