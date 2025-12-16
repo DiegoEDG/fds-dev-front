@@ -114,9 +114,13 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   const [currentVersion, setCurrentVersion] = useState("V2");
 
   // 🧠 Redux
-  const state = useSelector(
+  const reduxComponent = useSelector(
     (state: RootState) => state.currentComponent.currentComponent
   );
+
+  const locationState = location.state as IComponentApi | null;
+
+  const componentData = locationState ?? reduxComponent;
 
   const {
     id,
@@ -128,7 +132,7 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
     storybookLink,
     image,
     atomicType,
-  } = state ?? {};
+  } = componentData ?? {};
 
   const isWipComponent = useMemo(
     () => location.pathname.split("/").pop() === "Wipcomponent",
@@ -148,10 +152,10 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
   const handleEdit = useCallback(() => {
     if (id) {
-      setSelectedRecord(state as IComponentApi);
+      setSelectedRecord(componentData as IComponentApi);
       toggleModal();
     }
-  }, [id, state, toggleModal]);
+  }, [id, componentData, toggleModal]);
 
   const handleVersionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedVersion = event.target.value;
@@ -160,6 +164,7 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
   return (
     <main
+      key={componentData?.id}
       className={`container mx-auto ${className}`}
       data-testid="component-layout"
     >
