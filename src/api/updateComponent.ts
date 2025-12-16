@@ -39,6 +39,7 @@ const createComponentFormData = (component: IComponentForm): FormData => {
 	formData.append('comment', component.comment || '');
 	formData.append('figmaLink', component.figmaLink || '');
 	formData.append('storybookLink', component.storybookLink || '');
+	formData.append('atomicType', component.atomicType || '');
 
 	// 🖼️ Only append image if it's a new upload
 	if (component.image instanceof File) {

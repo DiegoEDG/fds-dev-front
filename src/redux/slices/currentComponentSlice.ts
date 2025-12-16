@@ -19,6 +19,7 @@ export interface Component {
   figmaLink?: string;
   storybookLink?: string;
   image?: string | null;
+  atomicType?: string | null;
 }
 
 interface CurrentComponentState {
@@ -45,6 +46,7 @@ const initialState: CurrentComponentState = {
     ],
     storybookLink: "",
     figmaLink: "",
+    atomicType: "atom",
   },
 };
 

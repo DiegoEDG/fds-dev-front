@@ -14,6 +14,7 @@ export interface IFormState {
 	comment: string;
 	description?: string;
 	image?: File | null;
+	atomicType: string | null;
 }
 
 const initialState: IFormState = {
@@ -28,7 +29,8 @@ const initialState: IFormState = {
 	storybookLink: '',
 	comment: '',
 	description: '',
-	image: null
+	image: null,
+	atomicType: ''
 };
 
 const formSlice = createSlice({
@@ -39,6 +41,9 @@ const formSlice = createSlice({
 			const { field, value } = action.payload;
 			if (field === 'image') {
 				state.image = value as File | null;
+			} else if (field === 'atomicType') {
+				// Handle both null and string for atomicType
+				state.atomicType = (value as string | null) || null;
 			} else {
 				state[field] = value as string;
 			}
@@ -57,7 +62,8 @@ const formSlice = createSlice({
 				storybookLink: action.payload.storybookLink || '',
 				comment: action.payload.comment,
 				description: action.payload.description || '',
-				image: action.payload.image || null
+				image: action.payload.image || null,
+				atomicType: action.payload.atomicType || null
 			};
 		},
 		resetForm: () => initialState

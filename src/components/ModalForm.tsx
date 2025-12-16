@@ -44,6 +44,15 @@ const STATUS_OPTIONS = [
 	{ value: '🚫', label: '🚫 Not Applicable' }
 ];
 
+const ATOMIC_TYPE_OPTIONS = [
+	{ value: '', label: '-- Select an atomic type --' },
+	{ value: 'atom', label: 'Atom' },
+	{ value: 'molecule', label: 'Molecule' },
+	{ value: 'organism', label: 'Organism' },
+	{ value: 'template', label: 'Template' },
+	{ value: 'page', label: 'Page' }
+];
+
 //* Map component data to form data structure
 export const mapComponentToFormData = (component: IComponentApi): any => {
 	return {
@@ -55,6 +64,7 @@ export const mapComponentToFormData = (component: IComponentApi): any => {
 		image: component.image,
 		cdn: component.statuses[0].cdn,
 		figma: component.statuses[0].figma,
+		atomicType: component.atomicType,
 		guidelines: component.statuses[0].guidelines,
 		storybook: component.statuses[0].storybook,
 		figmaLink: component.figmaLink,
@@ -248,14 +258,21 @@ const ModalForm: React.FC<ModalFormProps> = ({
 
 							{/* Name and Category Row */}
 							<div className="flex flex-col sm:flex-row gap-2 w-full sm:w-[600px]">
-								<div className="flex flex-col gap-1 w-full sm:!w-[50%]">
+								<div className="flex flex-col gap-1 w-full sm:!w-[40%]">
 									{renderFieldGroup('name', 'Name', renderTextField('name', formState.name))}
 								</div>
-								<div className="flex flex-col gap-1 w-full sm:!w-[50%]">
+								<div className="flex flex-col gap-1 w-full sm:!w-[30%]">
 									{renderFieldGroup(
 										'category',
 										'Category',
 										renderSelectField('category', formState.category, CATEGORY_OPTIONS)
+									)}
+								</div>
+								<div className="flex flex-col gap-1 w-full sm:!w-[30%]">
+									{renderFieldGroup(
+										'atomicType',
+										'Atomic Type',
+										renderSelectField('atomicType', formState.atomicType || '', ATOMIC_TYPE_OPTIONS)
 									)}
 								</div>
 							</div>
