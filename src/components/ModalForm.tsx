@@ -10,6 +10,7 @@ import { addComponent, updateComponentThunk } from '../redux/slices/componentsSl
 import { addToast, removeToast } from '../redux/slices/toastSlice';
 import { getNavLinkTo } from '../utils/getNavLinkTo';
 import { isValidURL } from '../utils/urlValidator';
+import MscSpinner from './MscSpinner';
 
 interface ModalFormProps {
 	triggerModal: string;
@@ -88,6 +89,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
 	const [isVisible, setIsVisible] = useState(false);
 	const [fadeIn, setFadeIn] = useState(false);
 	const [isEditingImage, setIsEditingImage] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		if (triggerModal !== 'hidden') {
@@ -147,6 +149,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
+		setIsLoading(true);
 
 		const componentCasted = {
 			...formState,
@@ -156,11 +159,13 @@ const ModalForm: React.FC<ModalFormProps> = ({
 		// Validate links
 		if (formState.figmaLink && !isValidURL(formState.figmaLink.trim())) {
 			showToast('error', 'Invalid Figma link', 'Please enter a valid URL.');
+			setIsLoading(false);
 			return;
 		}
 
 		if (formState.storybookLink && !isValidURL(formState.storybookLink.trim())) {
 			showToast('error', 'Invalid Storybook link', 'Please enter a valid URL.');
+			setIsLoading(false);
 			return;
 		}
 
@@ -168,36 +173,46 @@ const ModalForm: React.FC<ModalFormProps> = ({
 		const isNewComponent = formState.id === '';
 		const actionType = isNewComponent ? 'created' : 'updated';
 
-		//* Dispatch the appropriate action directly instead of using a variable
-		let response: any;
-		if (isNewComponent) {
-			response = await dispatch(addComponent(componentCasted));
-		} else {
-			response = await dispatch(updateComponentThunk(componentCasted));
-		}
-
-		if (response.payload && response.payload.id !== 0) {
-			showToast('success', `Component ${actionType}`);
-
-			if (!isNewComponent) {
-				const updatedComponent: any = {
-					...selectedRecord,
-					...componentCasted,
-					statuses: [
-						{
-							guidelines: formState.guidelines,
-							figma: formState.figma,
-							storybook: formState.storybook,
-							cdn: formState.cdn
-						}
-					]
-				};
-				dispatch(setCurrentComponent(updatedComponent));
+		try {
+			//* Dispatch the appropriate action directly instead of using a variable
+			let response: any;
+			if (isNewComponent) {
+				response = await dispatch(addComponent(componentCasted));
+			} else {
+				response = await dispatch(updateComponentThunk(componentCasted));
 			}
-		}
 
-		closeModalWithAnimation();
-		dispatch(resetForm());
+			if (response.payload && response.payload.id !== 0) {
+				showToast('success', `Component ${actionType}`);
+
+				if (!isNewComponent) {
+					const updatedComponent: any = {
+						...selectedRecord,
+						...componentCasted,
+						statuses: [
+							{
+								guidelines: formState.guidelines,
+								figma: formState.figma,
+								storybook: formState.storybook,
+								cdn: formState.cdn
+							}
+						]
+					};
+					dispatch(setCurrentComponent(updatedComponent));
+				}
+				
+				// Reload the page to refresh data and images
+				setTimeout(() => {
+					window.location.reload();
+				}, 500);
+			} else {
+				// Only stop loading if response was not successful
+				setIsLoading(false);
+			}
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			setIsLoading(false);
+		}
 	};
 
 	const renderFieldGroup = (id: string, label: string, children: React.ReactNode) => (
@@ -398,6 +413,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
 						</button>
 					</div>
 				</form>
+				{isLoading && <MscSpinner />}
 			</div>
 		</div>
 	);
