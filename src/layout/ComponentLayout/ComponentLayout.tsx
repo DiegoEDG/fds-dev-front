@@ -100,6 +100,9 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   children,
   className = "",
   statusBar = true,
+  name: nameProp,
+  category: categoryProp,
+  description: descriptionProp,
 }) => {
   // 🪝 Hooks
   const location = useLocation();
@@ -124,9 +127,9 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
   const {
     id,
-    name,
-    category,
-    description,
+    name = nameProp,
+    category = categoryProp,
+    description = descriptionProp,
     statuses,
     figmaLink,
     storybookLink,
@@ -245,10 +248,16 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
       />
 
       <section className="pb-4">
-        {image ? (
+        {children ? (
+          currentVersion === "V2" ? (
+            <div key={currentVersion}>{children}</div>
+          ) : (
+            <MscTypographyPageV1 />
+          )
+        ) : image ? (
           <img src={image} alt={`${name} component visualization`} />
         ) : currentVersion === "V2" ? (
-          <div key={currentVersion}>{children}</div> // forces rerender when version changes
+          <div key={currentVersion}>{children}</div>
         ) : (
           <MscTypographyPageV1 />
         )}

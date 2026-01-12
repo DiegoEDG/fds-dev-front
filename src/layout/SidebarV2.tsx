@@ -141,6 +141,7 @@ const SidebarV2: React.FC = () => {
   ) => (
     <NavLink
       to={navToPath}
+      state={comp}
       onClick={() => {
         toggleSidebar();
         if (comp) dispatch(setCurrentComponent(comp));
