@@ -36,6 +36,12 @@ import MscAlphabeticPagerPage from "../pages/AlphabeticPager/MscAlphabeticPagerP
 import ChangeLog from "../pages/ChangeLog/ChangeLog";
 import ArchitectureFlow from "../pages/ArchitectureFlow/ArchitectureFlow";
 import EcosystemPage from "../pages/EcosystemPage/EcosystemPage";
+import AtomPage from "../pages/Atom/AtomPage";
+import MoleculePage from "../pages/Molecule/MoleculePage";
+import OrganismPage from "../pages/Organism/OrganismPage";
+
+import PagePage from "../pages/Page/PagePage";
+import TemplatesPage from "../pages/Templates/TemplatesPage";
 
 export const routesIndex = [
   {
@@ -194,6 +200,27 @@ export const routesIndex = [
       {
         path: "Ecosystem",
         element: <EcosystemPage />,
+      },
+      {
+        path: "Atom",
+        element: <AtomPage />,
+      },
+      {
+        path: "Molecule",
+        element: <MoleculePage />,
+      },
+      {
+        path: "Organism",
+        element: <OrganismPage />,
+      },
+
+      {
+        path: "Page",
+        element: <PagePage />,
+      },
+      {
+        path: "Templates",
+        element: <TemplatesPage />,
       },
     ],
   },
