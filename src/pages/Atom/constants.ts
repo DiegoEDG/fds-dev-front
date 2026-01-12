@@ -1,11 +1,10 @@
-export const codeAtom = `<!-- Atom Examples -->
-<div class="flex gap-4 items-center p-4">
-  <!-- Label Atom -->
-  <label class="text-sm font-bold text-gray-700">Label</label>
+export const codeAtom = `// Atom Examples using Project Components
 
-  <!-- Input Atom -->
-  <input type="text" placeholder="Input" class="border border-gray-300 rounded px-3 py-2" />
+// Label Atom
+<label className="text-sm font-bold text-gray-700">Form Label</label>
 
-  <!-- Button Atom -->
-  <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Button</button>
-</div>`
+// Input Atom
+<MscInput label="Email Address" />
+
+// Button Atom
+<MscButton label="Primary Button" />`
