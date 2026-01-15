@@ -40,6 +40,15 @@ import AtomPage from "../pages/Atom/AtomPage";
 import MoleculePage from "../pages/Molecule/MoleculePage";
 import OrganismPage from "../pages/Organism/OrganismPage";
 
+import CategoryTagsPage from "../pages/Organism/CategoryTagsPage";
+import SliderPage from "../pages/Organism/SliderPage";
+import RecentlyViewedPage from "../pages/Organism/RecentlyViewedPage";
+import BestSellersPage from "../pages/Organism/BestSellersPage";
+import BrowseCategoriesPage from "../pages/Organism/BrowseCategoriesPage";
+import ServicesDesignedPage from "../pages/Organism/ServicesDesignedPage";
+import TestimonialSectionPage from "../pages/Organism/TestimonialSectionPage";
+import AdditionalSectionsPage from "../pages/Organism/AdditionalSectionsPage";
+
 import PagePage from "../pages/Page/PagePage";
 import TemplatesPage from "../pages/Templates/TemplatesPage";
 
@@ -212,6 +221,38 @@ export const routesIndex = [
       {
         path: "Organism",
         element: <OrganismPage />,
+      },
+      {
+        path: "CategoryTags",
+        element: <CategoryTagsPage />,
+      },
+      {
+        path: "Slider",
+        element: <SliderPage />,
+      },
+      {
+        path: "RecentlyViewed",
+        element: <RecentlyViewedPage />,
+      },
+      {
+        path: "BestSellers",
+        element: <BestSellersPage />,
+      },
+      {
+        path: "BrowseCategories",
+        element: <BrowseCategoriesPage />,
+      },
+      {
+        path: "ServicesDesigned",
+        element: <ServicesDesignedPage />,
+      },
+      {
+        path: "TestimonialSection",
+        element: <TestimonialSectionPage />,
+      },
+      {
+        path: "AdditionalSections",
+        element: <AdditionalSectionsPage />,
       },
 
       {

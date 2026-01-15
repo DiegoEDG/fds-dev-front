@@ -16,4 +16,13 @@ export const codeOrganism = `<!-- Header Organism Example -->
     <input type="text" placeholder="Search..." class="border rounded px-2 py-1 text-sm" />
     <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm">Search</button>
   </div>
-</header>`
+</header>`;
+
+export const codeCategoryTags = ``;
+export const codeSlider = ``;
+export const codeRecentlyViewed = ``;
+export const codeBestSellers = ``;
+export const codeBrowseCategories = ``;
+export const codeServicesDesigned = ``;
+export const codeTestimonialSection = ``;
+export const codeAdditionalSections = ``;
