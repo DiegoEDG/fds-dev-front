@@ -1,4 +1,48 @@
 export default function BrowseCategories() {
+  const imgMilling = new URL(
+    "../../assets/homepage/milling.jpg",
+    import.meta.url
+  ).href;
+  const imgHoleMaking = new URL(
+    "../../assets/homepage/hole-making.png",
+    import.meta.url
+  ).href;
+  const imgSafety = new URL("../../assets/homepage/safety.png", import.meta.url)
+    .href;
+  const imgAbrasives = new URL(
+    "../../assets/homepage/abrasives.png",
+    import.meta.url
+  ).href;
+  const imgIndexable = new URL(
+    "../../assets/homepage/indexable.png",
+    import.meta.url
+  ).href;
+  const imgPowerTools = new URL(
+    "../../assets/homepage/power-tools.png",
+    import.meta.url
+  ).href;
+  const imgHose = new URL("../../assets/homepage/hose.png", import.meta.url)
+    .href;
+  const imgHandTools = new URL(
+    "../../assets/homepage/hand-tools.png",
+    import.meta.url
+  ).href;
+  const imgClamping = new URL(
+    "../../assets/homepage/clamping.png",
+    import.meta.url
+  ).href;
+  const imgFasteners = new URL(
+    "../../assets/homepage/fasteners.png",
+    import.meta.url
+  ).href;
+  const imgJanitorial = new URL(
+    "../../assets/homepage/janitorial.png",
+    import.meta.url
+  ).href;
+  const imgLighting = new URL(
+    "../../assets/homepage/lighting.png",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -50,7 +94,7 @@ export default function BrowseCategories() {
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/milling.jpg"
+                src="${imgMilling}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Milling</p>
@@ -63,7 +107,7 @@ export default function BrowseCategories() {
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/hole-making.png"
+                src="${imgHoleMaking}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Hole Making</p>
@@ -71,12 +115,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/safety.png"
+                src="${imgSafety}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Safety</p>
@@ -84,25 +128,25 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/abrasives.png"
-                class="sm:mb-2 w/[3.75rem] lg:w-16 mx-6 sm:mx-0"
+                src="${imgAbrasives}"
+                class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Abrasives</p>
             </div>
           </article>
 
           <article
-            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/indexable.png"
+                src="${imgIndexable}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Indexable Cutting Tools</p>
@@ -110,12 +154,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/power-tools.png"
+                src="${imgPowerTools}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Power Tools</p>
@@ -123,12 +167,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="hidden lg:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="hidden lg:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/hose.png"
+                src="${imgHose}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Hose, Tube, Fittings & Valves</p>
@@ -136,12 +180,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="hidden lg:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="hidden lg:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/hand-tools.png"
+                src="${imgHandTools}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Hand Tools</p>
@@ -149,12 +193,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/clamping.png"
+                src="${imgClamping}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Clamping, Workholding & Positioning</p>
@@ -162,12 +206,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/fasteners.png"
+                src="${imgFasteners}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Fasteners</p>
@@ -175,12 +219,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/janitorial.png"
+                src="${imgJanitorial}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Janitorial & Facility Maintenance</p>
@@ -188,12 +232,12 @@ export default function BrowseCategories() {
           </article>
 
           <article
-            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify_center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
+            class="hidden xl:flex p-2 sm:p-0 flex-col sm:min-h-52 sm:items-center justify-center bg-white hover:outline hover:outline-2 hover:outline-primary-blue hover:text-primary-blue"
             style="outline-offset: -2px"
           >
             <div class="sm:p-3 flex items-center sm:justify-center sm:flex-col">
               <img
-                src="../assets/homepage/lighting.png"
+                src="${imgLighting}"
                 class="sm:mb-2 w-[3.75rem] lg:w-16 mx-6 sm:mx-0"
               />
               <p class="text-base">Lighting & Electrical</p>

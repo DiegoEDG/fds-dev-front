@@ -1,4 +1,20 @@
 export default function Slider() {
+  const imgSliderA = new URL(
+    "../../assets/homepage/slider-ss-test-a.jpg",
+    import.meta.url
+  ).href;
+  const imgSliderB = new URL(
+    "../../assets/homepage/slider-ss-test-b.jpg",
+    import.meta.url
+  ).href;
+  const imgSliderC = new URL(
+    "../../assets/homepage/slider-ss-test-c.jpg",
+    import.meta.url
+  ).href;
+  const imgSliderD = new URL(
+    "../../assets/homepage/slider-ss-test-dd.jpg",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -7,11 +23,11 @@ export default function Slider() {
       <picture>
         <source
           media="(min-width:768px)"
-          srcset="../assets/homepage/slider-ss-test-a.jpg"
+          srcset="${imgSliderA}"
         />
 
         <img
-          src="../assets/homepage/slider-ss-test-dd.jpg"
+          src="${imgSliderD}"
           alt="Copy test image"
           class="w-full rounded"
         />
@@ -20,11 +36,11 @@ export default function Slider() {
       <picture>
         <source
           media="(min-width:768px)"
-          srcset="../assets/homepage/slider-ss-test-b.jpg"
+          srcset="${imgSliderB}"
         />
 
         <img
-          src="../assets/homepage/slider-ss-test-c.jpg"
+          src="${imgSliderC}"
           alt="Copy test image"
           class="w-full rounded"
         />

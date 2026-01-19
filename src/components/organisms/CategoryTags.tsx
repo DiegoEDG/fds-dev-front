@@ -1,4 +1,8 @@
 export default function CategoryTags() {
+  const imgChevron = new URL(
+    "../../assets/svg/chevron-r-1.png",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -30,12 +34,12 @@ export default function CategoryTags() {
             <button
               class="scroll-left flex items-center justify-center rounded-full bg-transparent size-10 shadow-md"
             >
-              <img src="../assets/svg/chevron-r-1.png" class="rotate-180" />
+              <img src="${imgChevron}" class="rotate-180" />
             </button>
             <button
               class="scroll-right flex items-center justify-center rounded-full bg-white size-10 shadow-md"
             >
-              <img src="../assets/svg/chevron-r-1.png" />
+              <img src="${imgChevron}" />
             </button>
           </div>
         </div>

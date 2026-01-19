@@ -1,4 +1,21 @@
 export default function RecentlyViewed() {
+  const imgDrill = new URL("../../assets/homepage/drill.png", import.meta.url)
+    .href;
+  const imgGloves = new URL("../../assets/homepage/gloves.png", import.meta.url)
+    .href;
+  const imgBattery = new URL(
+    "../../assets/homepage/battery.png",
+    import.meta.url
+  ).href;
+  const imgAC = new URL("../../assets/homepage/ac.png", import.meta.url).href;
+  const imgCompressor = new URL(
+    "../../assets/homepage/compresor.png",
+    import.meta.url
+  ).href;
+  const imgBattery2 = new URL(
+    "../../assets/homepage/battery2.png",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -40,7 +57,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/drill.png"
+                src="${imgDrill}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -88,7 +105,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/gloves.png"
+                src="${imgGloves}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -135,7 +152,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/battery.png"
+                src="${imgBattery}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -182,7 +199,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/ac.png"
+                src="${imgAC}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -229,7 +246,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/compresor.png"
+                src="${imgCompressor}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -276,7 +293,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/battery2.png"
+                src="${imgBattery2}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -323,7 +340,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/battery2.png"
+                src="${imgBattery2}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -370,7 +387,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/battery2.png"
+                src="${imgBattery2}"
                 alt="Product Image"
                 class="object-fit"
               />
@@ -417,7 +434,7 @@ export default function RecentlyViewed() {
           >
             <div class="h-[88px] w-[210px] flex justify-center">
               <img
-                src="../assets/homepage/battery2.png"
+                src="${imgBattery2}"
                 alt="Product Image"
                 class="object-fit"
               />

@@ -174,7 +174,7 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
       <header className="flex flex-row place-content-between items-start">
         <div className="flex flex-col gap-2">
           {category && (
-            <small className="text-sm text-primary-blue block">
+            <small className="text-sm text-primary-blue block font-bold">
               {category}
             </small>
           )}
@@ -207,8 +207,13 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
           {atomicType && (
             <div className="flex items-center gap-2 mb-4 text-gray-500">
-              <FontAwesomeIcon icon={getCategoryIcon(category)} className="text-sm" />
-              <span className="text-sm capitalize font-medium">{atomicType}</span>
+              <FontAwesomeIcon
+                icon={getCategoryIcon(category)}
+                className="text-sm"
+              />
+              <span className="text-sm capitalize font-medium">
+                {atomicType}
+              </span>
             </div>
           )}
 

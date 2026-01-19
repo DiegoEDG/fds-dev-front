@@ -1,4 +1,10 @@
 export default function TestimonialSection() {
+  const imgLogo = new URL("../../assets/homepage/logo-lon.png", import.meta.url)
+    .href;
+  const imgTestimonial = new URL(
+    "../../assets/homepage/testimonial.png",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -79,12 +85,12 @@ export default function TestimonialSection() {
             <div
               class="w-24 bg-white rounded-md flex items-center justify-center"
             >
-              <img src="../assets/homepage/logo-lon.png" alt="" />
+              <img src="${imgLogo}" alt="" />
             </div>
 
             <div class="absolute -right-[73px] top-0 flex items-center h-full">
               <img
-                src="../assets/homepage/testimonial.png"
+                src="${imgTestimonial}"
                 alt="Chris Basgall"
                 class="h-[250px] testimonial-image transition-transform duration-[1200ms] ease-out"
               />

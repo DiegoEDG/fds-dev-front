@@ -1,4 +1,26 @@
 export default function AdditionalSections() {
+  const imgSaveOurSales = new URL(
+    "../../assets/homepage/save-our-sales.jpg",
+    import.meta.url
+  ).href;
+  const imgExclusiveBrand = new URL(
+    "../../assets/homepage/exclusive-brand.jpg",
+    import.meta.url
+  ).href;
+  const imgTwoIne = new URL(
+    "../../assets/homepage/two-ine.jpg",
+    import.meta.url
+  ).href;
+  const imgRigid = new URL("../../assets/homepage/rigid.jpg", import.meta.url)
+    .href;
+  const imgGlovesJpg = new URL(
+    "../../assets/homepage/gloves.jpg",
+    import.meta.url
+  ).href;
+  const imgDactory = new URL(
+    "../../assets/homepage/dactory.jpg",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -43,7 +65,7 @@ export default function AdditionalSections() {
             class="order-1 sm:order-2 sm:w-6/12 overflow-hidden flex items-center justify-center rounded-r"
           >
             <img
-              src="../assets/homepage/save-our-sales.jpg"
+              src="${imgSaveOurSales}"
               alt=""
               class="h-full w-full object-cover"
             />
@@ -72,7 +94,7 @@ export default function AdditionalSections() {
             class="sm:w-6/12 overflow-hidden flex items-center justify-center rounded-l order-1 sm:order-2"
           >
             <img
-              src="../assets/homepage/exclusive-brand.jpg"
+              src="${imgExclusiveBrand}"
               alt=""
               class="h-full w-full object-cover"
             />
@@ -86,7 +108,7 @@ export default function AdditionalSections() {
         <article class="bg-white rounded">
           <div class="h-[140px] overflow-hidden rounded-t">
             <img
-              src="../assets/homepage/two-ine.jpg"
+              src="${imgTwoIne}"
               alt=""
               class="w-full h-full object-cover"
             />
@@ -107,7 +129,7 @@ export default function AdditionalSections() {
         <article class="bg-white rounded">
           <div class="h-[140px] overflow-hidden rounded-t">
             <img
-              src="../assets/homepage/rigid.jpg"
+              src="${imgRigid}"
               alt=""
               class="w-full h-full object-cover"
             />
@@ -128,7 +150,7 @@ export default function AdditionalSections() {
         <article class="bg-white rounded">
           <div class="h-[140px] overflow-hidden rounded-t">
             <img
-              src="../assets/homepage/gloves.jpg"
+              src="${imgGlovesJpg}"
               alt=""
               class="w-full h-full object-cover"
             />
@@ -149,7 +171,7 @@ export default function AdditionalSections() {
         <article class="bg-white rounded">
           <div class="h-[140px] overflow-hidden rounded-t">
             <img
-              src="../assets/homepage/dactory.jpg"
+              src="${imgDactory}"
               alt=""
               class="w-full h-full object-cover"
             />

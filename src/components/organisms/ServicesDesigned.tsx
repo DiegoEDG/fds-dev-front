@@ -1,4 +1,16 @@
 export default function ServicesDesigned() {
+  const imgProcurement = new URL(
+    "../../assets/homepage/procurement.jpg",
+    import.meta.url
+  ).href;
+  const imgInventory = new URL(
+    "../../assets/homepage/inventory-management.jpg",
+    import.meta.url
+  ).href;
+  const imgSafety = new URL(
+    "../../assets/homepage/safety-service.jpg",
+    import.meta.url
+  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -20,7 +32,7 @@ export default function ServicesDesigned() {
             class="h-[140px] overflow-hidden flex justify-center items-center rounded-t"
           >
             <img
-              src="../assets/homepage/procurement.jpg"
+              src="${imgProcurement}"
               alt=""
               class="object-cover h-full w-full"
             />
@@ -42,7 +54,7 @@ export default function ServicesDesigned() {
             class="h-[140px] overflow-hidden flex justify-center items-center rounded-t"
           >
             <img
-              src="../assets/homepage/inventory-management.jpg"
+              src="${imgInventory}"
               alt=""
               class="object-cover h-full w-full"
             />
@@ -64,7 +76,7 @@ export default function ServicesDesigned() {
             class="h-[140px] overflow-hidden flex justify-center items-center rounded-t"
           >
             <img
-              src="../assets/homepage/safety-service.jpg"
+              src="${imgSafety}"
               alt=""
               class="object-cover h-full w-full"
             />
