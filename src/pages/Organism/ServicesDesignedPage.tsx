@@ -10,8 +10,8 @@ const ServicesDesignedPage = () => {
   }, []);
 
   return (
-    <ComponentLayout name="Services Designed" description="">
-      <MscComponentSnippet code={codeServicesDesigned}>
+    <ComponentLayout name="Services Designed">
+      <MscComponentSnippet code={codeServicesDesigned} variant="transparent">
         <ServicesDesigned />
       </MscComponentSnippet>
     </ComponentLayout>
