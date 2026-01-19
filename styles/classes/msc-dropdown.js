@@ -56,9 +56,6 @@ module.exports = function ({ addComponents, theme }) {
       "&:hover": {
         "@apply bg-[#f2f2f280]": {},
       },
-      "&:active": {
-        "": {},
-      },
     },
     ".dropdown-disabled": {
       "@apply cursor-not-allowed text-[#21212129] border-[#21212129]": {},
@@ -102,9 +99,6 @@ module.exports = function ({ addComponents, theme }) {
         {},
       "&:hover": {
         "@apply bg-[#f2f2f280]": {},
-      },
-      "&:active": {
-        "": {},
       },
     },
     ".double-dropdown-active": {

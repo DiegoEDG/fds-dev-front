@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import animation from "../assets/animation.json";
 import MscLoginWidget from "../components/MscLoginWidget/MscLoginWidget";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,14 +32,7 @@ export default function Home() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  // Lottie-react handles looping/autoplay via props
 
   const { user, isAuthenticated } = useAuth0();
 
@@ -156,9 +149,10 @@ export default function Home() {
           <Slider intervalMs={5000}>
             <div className="flex items-center justify-center">
               <Lottie
-                options={defaultOptions}
-                height={lottieSize}
-                width={lottieSize}
+                animationData={animation}
+                loop
+                autoplay
+                style={{ height: lottieSize, width: lottieSize }}
               />
             </div>
             <div className="flex items-center justify-center">

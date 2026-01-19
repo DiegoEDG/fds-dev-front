@@ -1,8 +1,6 @@
+import imgChevron from "../../assets/chevron-down.svg";
+
 export default function CategoryTags() {
-  const imgChevron = new URL(
-    "../../assets/svg/chevron-r-1.png",
-    import.meta.url
-  ).href;
   return (
     <div
       dangerouslySetInnerHTML={{
