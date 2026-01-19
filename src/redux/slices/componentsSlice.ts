@@ -27,8 +27,8 @@ export const addComponent = createAsyncThunk(
             typeof data.image === "string"
               ? data.image
               : data.image instanceof File
-              ? data.image.name
-              : undefined,
+                ? data.image.name
+                : undefined,
           statuses: [
             {
               guidelines: data.guidelines,
@@ -39,7 +39,7 @@ export const addComponent = createAsyncThunk(
           ],
           createdAt: new Date().toISOString(), // Puedes usar la del backend si la devuelve
           updatedAt: new Date().toISOString(),
-          atomicType: data.atomicType || null
+          atomicType: data.atomicType || null,
         };
 
         return newComponent;
@@ -117,13 +117,20 @@ export const componentSlice = createSlice({
       .addCase(
         updateComponentThunk.fulfilled,
         (state, action: PayloadAction<IComponentForm>) => {
-          const updatedComponent: IComponentApi = {
-            id: Number(action.payload.id),
+          const updatedId = Number(action.payload.id);
+
+          const prevComponent: IComponentApi | undefined = state
+            .flatMap((cat) => cat.components)
+            .find((c) => c.id === updatedId);
+
+          const baseUpdated: IComponentApi = {
+            id: updatedId,
             name: action.payload.name,
             comment: action.payload.comment,
-            description: "",
+            description:
+              action.payload.description ?? prevComponent?.description ?? "",
             category: action.payload.category,
-            image: "", // Agrega si tienes la imagen
+            image: prevComponent?.image, // preserva imagen existente
             statuses: [
               {
                 guidelines: action.payload.guidelines,
@@ -132,31 +139,34 @@ export const componentSlice = createSlice({
                 cdn: action.payload.cdn,
               },
             ],
-            createdAt: "", // Podrías mantener los anteriores si los tienes
+            createdAt: prevComponent?.createdAt ?? "",
             updatedAt: new Date().toISOString(),
-            atomicType: action.payload.atomicType || null
+            atomicType:
+              action.payload.atomicType || prevComponent?.atomicType || null,
           };
 
           let categoryExists = false;
 
           const newState = state.map((item) => {
-            if (item.category === updatedComponent.category) {
+            if (item.category === baseUpdated.category) {
               categoryExists = true;
               return {
                 ...item,
                 components: item.components.some(
-                  (comp) => comp.id === updatedComponent.id
+                  (comp) => comp.id === baseUpdated.id
                 )
                   ? item.components.map((comp) =>
-                      comp.id === updatedComponent.id ? updatedComponent : comp
+                      comp.id === baseUpdated.id
+                        ? { ...comp, ...baseUpdated }
+                        : comp
                     )
-                  : [...item.components, updatedComponent], // Add if it doesn't exist
+                  : [...item.components, baseUpdated], // Add if it doesn't exist
               };
             } else {
               return {
                 ...item,
                 components: item.components.filter(
-                  (comp) => comp.id !== updatedComponent.id
+                  (comp) => comp.id !== baseUpdated.id
                 ), // Remove from old category
               };
             }
@@ -167,8 +177,8 @@ export const componentSlice = createSlice({
             return [
               ...newState,
               {
-                category: updatedComponent.category,
-                components: [updatedComponent],
+                category: baseUpdated.category,
+                components: [baseUpdated],
               },
             ];
           }
