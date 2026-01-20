@@ -11,7 +11,7 @@ const BestSellersPage = () => {
 
   return (
     <ComponentLayout name="Best Sellers" description="">
-      <MscComponentSnippet code={codeBestSellers}>
+      <MscComponentSnippet code={codeBestSellers} variant="transparent">
         <BestSellers />
       </MscComponentSnippet>
     </ComponentLayout>

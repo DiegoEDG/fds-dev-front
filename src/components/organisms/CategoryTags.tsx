@@ -32,12 +32,12 @@ export default function CategoryTags() {
             <button
               class="scroll-left flex items-center justify-center rounded-full bg-transparent size-10 shadow-md"
             >
-              <img src="${imgChevron}" class="rotate-180" />
+              <img src="${imgChevron}" class="rotate-90 w-4" />
             </button>
             <button
               class="scroll-right flex items-center justify-center rounded-full bg-white size-10 shadow-md"
             >
-              <img src="${imgChevron}" />
+              <img src="${imgChevron}" class="-rotate-90 w-4" />
             </button>
           </div>
         </div>
