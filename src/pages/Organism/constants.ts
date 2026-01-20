@@ -81,4 +81,98 @@ export const codeServicesDesigned = `
   </section>
 `;
 export const codeTestimonialSection = ``;
-export const codeAdditionalSections = ``;
+export const codeFeatureHighlights = `
+  <!-- Feature Highlights section container -->
+  <section class="mx-auto max-w-screen-2xl flex flex-col px-5 lg:px-10 2xl:px-0">
+
+    <!-- Two-up highlights row -->
+    <div class="flex flex-col md:flex-row gap-4">
+      <!-- Card: Save with our sales flyers -->
+      <article class="w-full md:w-6/12 bg-white rounded flex flex-col sm:flex-row">
+        <div class="order-2 sm:order-1 p-5 sm:w-6/12 flex flex-col justify-center">
+          <b class="font-bold text-base">Save with our sales flyers</b>
+          <p class="text-sm mb-4">
+            This body copy area can support up to 108 cc max including spaces and the text can wrap to container.
+          </p>
+          <button class="px-2 w-fit md:px-5 rounded-full font-bold cursor-pointer min-w-24 md:min-w-32 bg-transparent border text-primary-blue_dark border-primary-blue_dark text-sm py-1 hover:bg-primary-blue_xlight">
+            Shop Clearance
+          </button>
+        </div>
+        <div class="order-1 sm:order-2 sm:w-6/12 overflow-hidden flex items-center justify-center rounded-r">
+          <img src="../assets/homepage/save-our-sales.jpg" alt="Save with our sales flyers" class="h-full w-full object-cover" />
+        </div>
+      </article>
+
+      <!-- Card: Exclusive Brands Clearance -->
+      <article class="w-full md:w-6/12 bg-white rounded flex flex-col sm:flex-row">
+        <div class="p-5 sm:w-6/12 flex flex-col items-start order-2 sm:order-1">
+          <b class="font-bold text-base">Exclusive Brands Clearance</b>
+          <p class="text-sm mb-4">
+            This body copy area can support up to 108 cc max including spaces and the text can wrap to container.
+          </p>
+          <button class="mt-auto px-2 md:px-5 rounded-full font-bold cursor-pointer min-w-24 md:min-w-32 bg-transparent border text-primary-blue_dark border-primary-blue_dark text-sm py-1 hover:bg-primary-blue_xlight">
+            Shop Clearance
+          </button>
+        </div>
+        <div class="sm:w-6/12 overflow-hidden flex items-center justify-center rounded-r order-1 sm:order-2">
+          <img src="../assets/homepage/exclusive-brand.jpg" alt="Exclusive Brands Clearance" class="h-full w-full object-cover" />
+        </div>
+      </article>
+    </div>
+
+    <!-- Four-up grid highlights -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4">
+      <!-- Card 1 -->
+      <article class="bg-white rounded">
+        <div class="h-[140px] overflow-hidden rounded-t">
+          <img src="../assets/homepage/two-ine.jpg" alt="Highlight 1" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5 flex flex-col items-start">
+          <p class="font-bold text-base mb-4">This is a Line Can Take up to 48CC Max or 2 line</p>
+          <button class="px-2 md:px-5 rounded-full font-bold cursor-pointer min-w-24 md:min-w-32 bg-transparent border text-primary-blue_dark border-primary-blue_dark text-sm py-1 hover:bg-primary-blue_xlight">
+            Shop Clearance
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="bg-white rounded">
+        <div class="h-[140px] overflow-hidden rounded-t">
+          <img src="../assets/homepage/rigid.jpg" alt="Highlight 2" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5 flex flex-col items-start">
+          <p class="font-bold text-base mb-4">This is a Line Can Take up to 48CC Max or 2 line</p>
+          <button class="px-2 md:px-5 rounded-full font-bold cursor-pointer min-w-24 md:min-w-32 bg-transparent border text-primary-blue_dark border-primary-blue_dark text-sm py-1 hover:bg-primary-blue_xlight">
+            Shop Clearance
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="bg-white rounded">
+        <div class="h-[140px] overflow-hidden rounded-t">
+          <img src="../assets/homepage/gloves.jpg" alt="Highlight 3" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5 flex flex-col items-start">
+          <p class="font-bold text-base mb-4">This is a Line Can Take up to 48CC Max or 2 line</p>
+          <button class="px-2 md:px-5 rounded-full font-bold cursor-pointer min-w-24 md:min-w-32 bg-transparent border text-primary-blue_dark border-primary-blue_dark text-sm py-1 hover:bg-primary-blue_xlight">
+            Shop Clearance
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="bg-white rounded">
+        <div class="h-[140px] overflow-hidden rounded-t">
+          <img src="../assets/homepage/dactory.jpg" alt="Highlight 4" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5 flex flex-col items-start">
+          <p class="font-bold text-base mb-4">This is a Line Can Take up to 48CC Max or 2 line</p>
+          <button class="px-2 md:px-5 rounded-full font-bold cursor-pointer min-w-24 md:min-w-32 bg-transparent border text-primary-blue_dark border-primary-blue_dark text-sm py-1 hover:bg-primary-blue_xlight">
+            Shop Clearance
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+`;

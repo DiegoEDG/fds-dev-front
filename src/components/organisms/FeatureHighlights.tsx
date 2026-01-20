@@ -1,45 +1,36 @@
-export default function AdditionalSections() {
+import MscInfo from "./MscInfo";
+
+export default function FeatureHighlights() {
   const imgSaveOurSales = new URL(
     "../../assets/homepage/save-our-sales.jpg",
-    import.meta.url
+    import.meta.url,
   ).href;
   const imgExclusiveBrand = new URL(
     "../../assets/homepage/exclusive-brand.jpg",
-    import.meta.url
+    import.meta.url,
   ).href;
   const imgTwoIne = new URL(
     "../../assets/homepage/two-ine.jpg",
-    import.meta.url
+    import.meta.url,
   ).href;
   const imgRigid = new URL("../../assets/homepage/rigid.jpg", import.meta.url)
     .href;
   const imgGlovesJpg = new URL(
     "../../assets/homepage/gloves.jpg",
-    import.meta.url
+    import.meta.url,
   ).href;
   const imgDactory = new URL(
     "../../assets/homepage/dactory.jpg",
-    import.meta.url
+    import.meta.url,
   ).href;
   return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `
+    <>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
     <section
       class="mx-auto max-w-screen-2xl flex flex-col px-5 lg:px-10 2xl:px-0"
     >
-      <!-- 2nd section -->
-      <article
-        class="p-3 w-full flex items-center justify-center bg-white font-bold my-4 text-center"
-      >
-        <span>
-          Have a Question? We’re here to help Call:
-          <a href="#" class="text-primary-blue_dark">1-800-645-7270</a> or Email
-          <a href="mailto:support@mscdirect.com" class="text-primary-blue_dark"
-            >support@mscdirect.com
-          </a>
-        </span>
-      </article>
 
       <!-- 3rd section -->
       <div class="flex flex-col md:flex-row gap-4">
@@ -91,7 +82,7 @@ export default function AdditionalSections() {
           </div>
 
           <div
-            class="sm:w-6/12 overflow-hidden flex items-center justify-center rounded-l order-1 sm:order-2"
+            class="sm:w-6/12 overflow-hidden flex items-center justify-center rounded-r order-1 sm:order-2"
           >
             <img
               src="${imgExclusiveBrand}"
@@ -190,34 +181,11 @@ export default function AdditionalSections() {
         </article>
       </div>
 
-      <!-- 5ft section -->
 
-      <article class="bg-white rounded p-6 mb-6">
-        <h3 class="text-xl mb-4 font-bold">MSC Industrial Supply Co.</h3>
-        <p class="text-sm mb-4 text-monochromes-grey">
-          MSC Industrial Supply, Inc. is a leading North American distributor of
-          metalworking and
-          <a href="#" class="text-black underline">maintenance</a>, repair and
-          operations
-          <a href="#" class="text-black underline">(MRO) products</a> and
-          services. With over 75 years of experience, MSC is dedicated to
-          helping customers drive greater productivity, profitability and
-          growth. MSC features over 1.5 million products ready-to-ship. Our
-          inventory management and other supply chain solutions ensure that your
-          workforce and facility are supplied with equipment that is reliable,
-          durable and accurate for every operation.
-        </p>
-
-        <p class="text-sm text-monochromes-grey">
-          We are your steadfast partner in providing innovative solutions that
-          deliver. That includes our knowledgeable customer service associates
-          who strive to ensure that every customer is provided with the best
-          possible shopping experience - first time, every time.
-        </p>
-      </article>
     </section>
         `.trim(),
-      }}
-    />
+        }}
+      />
+    </>
   );
 }

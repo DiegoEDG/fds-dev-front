@@ -47,11 +47,13 @@ import BestSellersPage from "../pages/Organism/BestSellersPage";
 import BrowseCategoriesPage from "../pages/Organism/BrowseCategoriesPage";
 import ServicesDesignedPage from "../pages/Organism/ServicesDesignedPage";
 import TestimonialSectionPage from "../pages/Organism/TestimonialSectionPage";
-import AdditionalSectionsPage from "../pages/Organism/AdditionalSectionsPage";
+import FeatureHighlightsPage from "../pages/Organism/FeatureHighlightsPage";
 
 import PagePage from "../pages/Page/PagePage";
 import TemplatesPage from "../pages/Templates/TemplatesPage";
 import BadgePage from "../pages/Atom/BadgePage";
+import QuestionFlagPage from "../pages/Atom/QuestionFlagPage";
+import MscInfoPage from "../pages/Organism/MscInfoPage";
 
 export const routesIndex = [
   {
@@ -97,6 +99,14 @@ export const routesIndex = [
       {
         path: "Badge",
         element: <BadgePage />,
+      },
+      {
+        path: "QuestionFlag",
+        element: <QuestionFlagPage />,
+      },
+      {
+        path: "MscInfo",
+        element: <MscInfoPage />,
       },
       {
         path: "Breadcrumb",
@@ -258,8 +268,8 @@ export const routesIndex = [
         element: <TestimonialSectionPage />,
       },
       {
-        path: "AdditionalSections",
-        element: <AdditionalSectionsPage />,
+        path: "FeatureHighlights",
+        element: <FeatureHighlightsPage />,
       },
 
       {
