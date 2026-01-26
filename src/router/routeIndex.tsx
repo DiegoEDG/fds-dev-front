@@ -27,7 +27,6 @@ import MscBreadcumbPage from "../pages/Breadcumb/MscBreadcumbPage";
 import MscModalListPage from "../pages/ModalList/MscModalListPage";
 import MscPaginationPage from "../pages/Pagination/MscPaginationPage";
 import MscTableModalPage from "../pages/TableModal/MscTableModalPage";
-import MscSimilarItems from "../pages/SimilarItems/MscSimilarItemsPage";
 import NotificationsPage from "../pages/Notifications/NotificationsPage";
 import MscTypographyPage from "../pages/TypographyPage/MscTypographyPage";
 import MscCartActionBarPage from "../pages/CartActionBar/MscCartActionBarPage";
@@ -48,6 +47,7 @@ import BrowseCategoriesPage from "../pages/Organism/BrowseCategoriesPage";
 import ServicesDesignedPage from "../pages/Organism/ServicesDesignedPage";
 import TestimonialSectionPage from "../pages/Organism/TestimonialSectionPage";
 import FeatureHighlightsPage from "../pages/Organism/FeatureHighlightsPage";
+import SimilarItemsPage from "../pages/Organism/SimilarItemsPage";
 
 import PagePage from "../pages/Page/PagePage";
 import TemplatesPage from "../pages/Templates/TemplatesPage";
@@ -207,7 +207,7 @@ export const routesIndex = [
       },
       {
         path: "SimilarItems",
-        element: <MscSimilarItems />,
+        element: <SimilarItemsPage />,
       },
       {
         path: "ComponentTester",
