@@ -50,6 +50,8 @@ import TestimonialSectionPage from '../pages/Organism/TestimonialSectionPage';
 
 import PagePage from '../pages/Page/PagePage';
 import TemplatesPage from '../pages/Templates/TemplatesPage';
+import BadgePage from '../pages/Atom/BadgePage';
+import RatingPage from '../pages/Atom/RatingPage';
 
 export const routesIndex = [
 	{
@@ -91,6 +93,10 @@ export const routesIndex = [
 			{
 				path: 'Alert',
 				element: <MscAlertPage />
+			},
+			{
+				path: 'Badge',
+				element: <BadgePage />
 			},
 			{
 				path: 'Breadcrumb',
@@ -144,6 +150,10 @@ export const routesIndex = [
 			{
 				path: 'Radio',
 				element: <MscRadioPage />
+			},
+			{
+				path: 'Rating',
+				element: <RatingPage />
 			},
 			{
 				path: 'Shadows',
@@ -249,6 +259,7 @@ export const routesIndex = [
 				path: 'TestimonialSection',
 				element: <TestimonialSectionPage />
 			},
+
 			{
 				path: 'Page',
 				element: <PagePage />
