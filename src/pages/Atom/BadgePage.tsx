@@ -12,8 +12,8 @@ const BadgePage = () => {
 	return (
 		<ComponentLayout name="Badge" description="Badge description">
 			<MscComponentSnippet code={codeAtom}>
-				<Badge />
-				<Badge variant="best_seller" />
+				<Badge className="mr-1" />
+				<Badge className="mr-1" variant="best_seller" />
 				<Badge variant="top_rated" />
 			</MscComponentSnippet>
 		</ComponentLayout>

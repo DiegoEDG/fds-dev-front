@@ -1,283 +1,271 @@
-import Home from "../pages/HomePage";
-import DocsLayout from "../layout/DocsLayout";
-import MscLinkPage from "../pages/Link/MscLinkPage";
-import MscTabsPage from "../pages/Tabs/MscTabsPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import MscAlertPage from "../pages/Alert/MscAlertPage";
-import MscRadioPage from "../pages/Radio/MscRadioPage";
-import MscInputPage from "../pages/Input/MscInputPage";
-import MscModalPage from "../pages/Modal/MscModalPage";
-import MscPagedown from "../pages/Pagedown/MscPagedown";
-import GettingStarted from "../pages/GettingStartedPage";
-import MscFilterPage from "../pages/Filter/MscFilterPage";
-import MscTogglePage from "../pages/Toggle/MscTogglePage";
-import MscDialogPage from "../pages/Dialog/MscDialogPage";
-import ComponentStatus from "../pages/ComponentStatusPage";
-import MscErrorPage from "../pages/ErrorPage/MscErrorPage";
-import MscSpinnerPage from "../pages/Spinner/MscSpinnerPage";
-import MscButtonsPage from "../pages/Buttons/MscButtonsPage";
-import WipComponent from "../pages/WipComponent/WipComponent";
-import MscColorsPage from "../pages/ColorsPage/MscColorsPage";
-import MscDividersPage from "../pages/Dividers/MscDividersPage";
-import MscCheckboxPage from "../pages/Checkbox/MscCheckboxPage";
-import MscDropdownPage from "../pages/Dropdown/MscDropdownPage";
-import MscShadowsPage from "../pages/ShadowsPage/MscShadowsPage";
-import MscSpacingPage from "../pages/SpacingPage/MscSpacingPage";
-import MscBreadcumbPage from "../pages/Breadcumb/MscBreadcumbPage";
-import MscModalListPage from "../pages/ModalList/MscModalListPage";
-import MscPaginationPage from "../pages/Pagination/MscPaginationPage";
-import MscTableModalPage from "../pages/TableModal/MscTableModalPage";
-import NotificationsPage from "../pages/Notifications/NotificationsPage";
-import MscTypographyPage from "../pages/TypographyPage/MscTypographyPage";
-import MscCartActionBarPage from "../pages/CartActionBar/MscCartActionBarPage";
-import ComponentTesterPage from "../pages/ComponentTesterPage/ComponentTesterPage";
-import MscAlphabeticPagerPage from "../pages/AlphabeticPager/MscAlphabeticPagerPage";
-import ChangeLog from "../pages/ChangeLog/ChangeLog";
-import ArchitectureFlow from "../pages/ArchitectureFlow/ArchitectureFlow";
-import EcosystemPage from "../pages/EcosystemPage/EcosystemPage";
-import AtomPage from "../pages/Atom/AtomPage";
-import MoleculePage from "../pages/Molecule/MoleculePage";
-import OrganismPage from "../pages/Organism/OrganismPage";
+import Home from '../pages/HomePage';
+import DocsLayout from '../layout/DocsLayout';
+import MscLinkPage from '../pages/Link/MscLinkPage';
+import MscTabsPage from '../pages/Tabs/MscTabsPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import MscAlertPage from '../pages/Alert/MscAlertPage';
+import MscRadioPage from '../pages/Radio/MscRadioPage';
+import MscInputPage from '../pages/Input/MscInputPage';
+import MscModalPage from '../pages/Modal/MscModalPage';
+import MscPagedown from '../pages/Pagedown/MscPagedown';
+import GettingStarted from '../pages/GettingStartedPage';
+import MscFilterPage from '../pages/Filter/MscFilterPage';
+import MscTogglePage from '../pages/Toggle/MscTogglePage';
+import MscDialogPage from '../pages/Dialog/MscDialogPage';
+import ComponentStatus from '../pages/ComponentStatusPage';
+import MscErrorPage from '../pages/ErrorPage/MscErrorPage';
+import MscSpinnerPage from '../pages/Spinner/MscSpinnerPage';
+import MscButtonsPage from '../pages/Buttons/MscButtonsPage';
+import WipComponent from '../pages/WipComponent/WipComponent';
+import MscColorsPage from '../pages/ColorsPage/MscColorsPage';
+import MscDividersPage from '../pages/Dividers/MscDividersPage';
+import MscCheckboxPage from '../pages/Checkbox/MscCheckboxPage';
+import MscDropdownPage from '../pages/Dropdown/MscDropdownPage';
+import MscShadowsPage from '../pages/ShadowsPage/MscShadowsPage';
+import MscSpacingPage from '../pages/SpacingPage/MscSpacingPage';
+import MscBreadcumbPage from '../pages/Breadcumb/MscBreadcumbPage';
+import MscModalListPage from '../pages/ModalList/MscModalListPage';
+import MscPaginationPage from '../pages/Pagination/MscPaginationPage';
+import MscTableModalPage from '../pages/TableModal/MscTableModalPage';
+import MscSimilarItems from '../pages/SimilarItems/MscSimilarItemsPage';
+import NotificationsPage from '../pages/Notifications/NotificationsPage';
+import MscTypographyPage from '../pages/TypographyPage/MscTypographyPage';
+import MscCartActionBarPage from '../pages/CartActionBar/MscCartActionBarPage';
+import ComponentTesterPage from '../pages/ComponentTesterPage/ComponentTesterPage';
+import MscAlphabeticPagerPage from '../pages/AlphabeticPager/MscAlphabeticPagerPage';
+import ChangeLog from '../pages/ChangeLog/ChangeLog';
+import ArchitectureFlow from '../pages/ArchitectureFlow/ArchitectureFlow';
+import EcosystemPage from '../pages/EcosystemPage/EcosystemPage';
+import AtomPage from '../pages/Atom/AtomPage';
+import MoleculePage from '../pages/Molecule/MoleculePage';
+import OrganismPage from '../pages/Organism/OrganismPage';
 
-import CategoryTagsPage from "../pages/Organism/CategoryTagsPage";
-import SliderPage from "../pages/Organism/SliderPage";
-import RecentlyViewedPage from "../pages/Organism/RecentlyViewedPage";
-import BestSellersPage from "../pages/Organism/BestSellersPage";
-import BrowseCategoriesPage from "../pages/Organism/BrowseCategoriesPage";
-import ServicesDesignedPage from "../pages/Organism/ServicesDesignedPage";
-import TestimonialSectionPage from "../pages/Organism/TestimonialSectionPage";
-import FeatureHighlightsPage from "../pages/Organism/FeatureHighlightsPage";
-import SimilarItemsPage from "../pages/Organism/SimilarItemsPage";
+import CategoryTagsPage from '../pages/Organism/CategoryTagsPage';
+import SliderPage from '../pages/Organism/SliderPage';
+import RecentlyViewedPage from '../pages/Organism/RecentlyViewedPage';
+import BestSellersPage from '../pages/Organism/BestSellersPage';
+import BrowseCategoriesPage from '../pages/Organism/BrowseCategoriesPage';
+import ServicesDesignedPage from '../pages/Organism/ServicesDesignedPage';
+import TestimonialSectionPage from '../pages/Organism/TestimonialSectionPage';
 
-import PagePage from "../pages/Page/PagePage";
-import TemplatesPage from "../pages/Templates/TemplatesPage";
-import BadgePage from "../pages/Atom/BadgePage";
-import QuestionFlagPage from "../pages/Atom/QuestionFlagPage";
-import MscInfoPage from "../pages/Organism/MscInfoPage";
+import PagePage from '../pages/Page/PagePage';
+import TemplatesPage from '../pages/Templates/TemplatesPage';
+import BadgePage from '../pages/Atom/BadgePage';
+import RatingPage from '../pages/Atom/RatingPage';
 
 export const routesIndex = [
   {
-    path: "/",
+    path: '/',
     element: <Home />,
-    errorElement: "error",
+    errorElement: 'error',
   },
   {
-    path: "/docs",
+    path: '/docs',
     element: <DocsLayout />,
-    errorElement: "error",
+    errorElement: 'error',
     children: [
       {
-        path: "login-page",
+        path: 'login-page',
         element: <LoginPage />,
       },
       {
-        path: "WipComponent/:component",
+        path: 'WipComponent/:component',
         element: <WipComponent />,
       },
       {
         index: true,
-        path: "Notifications",
+        path: 'Notifications',
         element: <NotificationsPage />,
       },
       {
         index: true,
-        path: "GettingStarted",
+        path: 'GettingStarted',
         element: <GettingStarted />,
       },
       {
-        path: "ComponentStatus",
+        path: 'ComponentStatus',
         element: <ComponentStatus />,
       },
       {
-        path: "AlphabeticPager",
+        path: 'AlphabeticPager',
         element: <MscAlphabeticPagerPage />,
       },
       {
-        path: "Alert",
+        path: 'Alert',
         element: <MscAlertPage />,
       },
       {
-        path: "Badge",
+        path: 'Badge',
         element: <BadgePage />,
       },
       {
-        path: "QuestionFlag",
-        element: <QuestionFlagPage />,
-      },
-      {
-        path: "MscInfo",
-        element: <MscInfoPage />,
-      },
-      {
-        path: "Breadcrumb",
+        path: 'Breadcrumb',
         element: <MscBreadcumbPage />,
       },
       {
-        path: "Buttons",
+        path: 'Buttons',
         element: <MscButtonsPage />,
       },
       {
-        path: "CartActionBar",
+        path: 'CartActionBar',
         element: <MscCartActionBarPage />,
       },
       {
-        path: "Checkbox",
+        path: 'Checkbox',
         element: <MscCheckboxPage />,
       },
       {
-        path: "Colors",
+        path: 'Colors',
         element: <MscColorsPage />,
       },
       {
-        path: "Dialog",
+        path: 'Dialog',
         element: <MscDialogPage />,
       },
       {
-        path: "Dividers",
+        path: 'Dividers',
         element: <MscDividersPage />,
       },
       {
-        path: "Dropdown",
+        path: 'Dropdown',
         element: <MscDropdownPage />,
       },
 
       {
-        path: "Input",
+        path: 'Input',
         element: <MscInputPage />,
       },
       {
-        path: "Link",
+        path: 'Link',
         element: <MscLinkPage />,
       },
       {
-        path: "Modal",
+        path: 'Modal',
         element: <MscModalPage />,
       },
       {
-        path: "Pagination",
+        path: 'Pagination',
         element: <MscPaginationPage />,
       },
       {
-        path: "Radio",
+        path: 'Radio',
         element: <MscRadioPage />,
       },
       {
-        path: "Shadows",
+        path: 'Rating',
+        element: <RatingPage />,
+      },
+      {
+        path: 'Shadows',
         element: <MscShadowsPage />,
       },
       {
-        path: "Spacing",
+        path: 'Spacing',
         element: <MscSpacingPage />,
       },
       {
-        path: "Spinner",
+        path: 'Spinner',
         element: <MscSpinnerPage />,
       },
       {
-        path: "Tabs",
+        path: 'Tabs',
         element: <MscTabsPage />,
       },
       {
-        path: "Toggle",
+        path: 'Toggle',
         element: <MscTogglePage />,
       },
       {
-        path: "Filter",
+        path: 'Filter',
         element: <MscFilterPage />,
       },
       {
-        path: "Typography",
+        path: 'Typography',
         element: <MscTypographyPage />,
       },
       {
-        path: "TableModal",
+        path: 'TableModal',
         element: <MscTableModalPage />,
       },
       {
-        path: "Error404",
+        path: 'Error404',
         element: <MscErrorPage />,
       },
       {
-        path: "PageDown",
+        path: 'PageDown',
         element: <MscPagedown />,
       },
       {
-        path: "MailListModals",
+        path: 'MailListModals',
         element: <MscModalListPage />,
       },
       {
-        path: "SimilarItems",
-        element: <SimilarItemsPage />,
+        path: 'SimilarItems',
+        element: <MscSimilarItems />,
       },
       {
-        path: "ComponentTester",
+        path: 'ComponentTester',
         element: <ComponentTesterPage />,
       },
       {
-        path: "ChangeLog",
+        path: 'ChangeLog',
         element: <ChangeLog />,
       },
       {
-        path: "ArchitectureFlow",
+        path: 'ArchitectureFlow',
         element: <ArchitectureFlow />,
       },
       {
-        path: "Ecosystem",
+        path: 'Ecosystem',
         element: <EcosystemPage />,
       },
       {
-        path: "Atom",
+        path: 'Atom',
         element: <AtomPage />,
       },
       {
-        path: "Molecule",
+        path: 'Molecule',
         element: <MoleculePage />,
       },
       {
-        path: "Organism",
+        path: 'Organism',
         element: <OrganismPage />,
       },
-
-      // Organism pages
       {
-        path: "CategoryTags",
+        path: 'CategoryTags',
         element: <CategoryTagsPage />,
       },
       {
-        path: "Slider",
+        path: 'Slider',
         element: <SliderPage />,
       },
       {
-        path: "RecentlyViewed",
+        path: 'RecentlyViewed',
         element: <RecentlyViewedPage />,
       },
       {
-        path: "BestSellers",
+        path: 'BestSellers',
         element: <BestSellersPage />,
       },
       {
-        path: "BrowseCategories",
+        path: 'BrowseCategories',
         element: <BrowseCategoriesPage />,
       },
       {
-        path: "ServicesDesigned",
+        path: 'ServicesDesigned',
         element: <ServicesDesignedPage />,
       },
       {
-        path: "TestimonialSection",
+        path: 'TestimonialSection',
         element: <TestimonialSectionPage />,
-      },
-      {
-        path: "FeatureHighlights",
-        element: <FeatureHighlightsPage />,
       },
 
       {
-        path: "Page",
+        path: 'Page',
         element: <PagePage />,
       },
       {
-        path: "Templates",
+        path: 'Templates',
         element: <TemplatesPage />,
       },
     ],
