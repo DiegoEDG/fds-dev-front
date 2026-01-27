@@ -1,7 +1,7 @@
-import React, { ReactNode, useState, useCallback, useMemo } from "react";
-import { useLocation } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { ReactNode, useState, useCallback, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPencil,
   faThLarge,
@@ -16,15 +16,15 @@ import {
   faWindowRestore,
   faListUl,
   faLayerGroup,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import MscStatusComponentBar from "../../components/MscStatusComponentBar/MscStatusComponentBar";
-import Links from "../../components/Links/Links";
-import ModalForm from "../../components/ModalForm";
-import { IComponentApi } from "../../interfaces/component.interface";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import MscTypographyPageV1 from "../../pages/TypographyPage/MscTypographyPageV1";
+import MscStatusComponentBar from '../../components/MscStatusComponentBar/MscStatusComponentBar';
+import Links from '../../components/Links/Links';
+import ModalForm from '../../components/ModalForm';
+import { IComponentApi } from '../../interfaces/component.interface';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import MscTypographyPageV1 from '../../pages/TypographyPage/MscTypographyPageV1';
 
 interface ComponentLayoutProps {
   id?: number;
@@ -38,55 +38,55 @@ interface ComponentLayoutProps {
 
 // 🔒 Constants
 const MODAL_VISIBILITY = {
-  SHOW: "",
-  HIDE: "hidden",
+  SHOW: '',
+  HIDE: 'hidden',
 } as const;
 
 const DEFAULT_VALUES: IComponentApi = {
   id: 0,
-  name: "",
-  category: "",
-  comment: "",
-  image: "",
-  figmaLink: "",
-  storybookLink: "",
-  createdAt: "",
-  updatedAt: "",
-  atomicType: "",
+  name: '',
+  category: '',
+  comment: '',
+  image: '',
+  figmaLink: '',
+  storybookLink: '',
+  createdAt: '',
+  updatedAt: '',
+  atomicType: '',
   statuses: [
     {
-      guidelines: "",
-      figma: "",
-      storybook: "",
-      cdn: "",
+      guidelines: '',
+      figma: '',
+      storybook: '',
+      cdn: '',
     },
   ],
 };
 
 // Icon Mapping Helper
-const getCategoryIcon = (catName: string = "") => {
+const getCategoryIcon = (catName: string = '') => {
   switch (catName) {
-    case "Foundations":
+    case 'Foundations':
       return faThLarge;
-    case "Interaction Units":
+    case 'Interaction Units':
       return faShapes;
-    case "View Modules":
+    case 'View Modules':
       return faFileCode;
-    case "Components":
+    case 'Components':
       return faCog;
-    case "Action":
+    case 'Action':
       return faBolt;
-    case "Form":
+    case 'Form':
       return faClipboardList;
-    case "Indicator":
+    case 'Indicator':
       return faLightbulb;
-    case "Layout":
+    case 'Layout':
       return faColumns;
-    case "Navigation":
+    case 'Navigation':
       return faCompass;
-    case "Overlay":
+    case 'Overlay':
       return faWindowRestore;
-    case "Collection":
+    case 'Collection':
       return faListUl;
     default:
       return faLayerGroup;
@@ -98,7 +98,7 @@ const getCategoryIcon = (catName: string = "") => {
  */
 export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   children,
-  className = "",
+  className = '',
   statusBar = true,
   name: nameProp,
   category: categoryProp,
@@ -109,17 +109,12 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   const { isAuthenticated } = useAuth0();
 
   // 🏷️ State
-  const [modalVisibility, setModalVisibility] = useState<"" | "hidden">(
-    MODAL_VISIBILITY.HIDE
-  );
-  const [selectedRecord, setSelectedRecord] =
-    useState<IComponentApi>(DEFAULT_VALUES);
-  const [currentVersion, setCurrentVersion] = useState("V2");
+  const [modalVisibility, setModalVisibility] = useState<'' | 'hidden'>(MODAL_VISIBILITY.HIDE);
+  const [selectedRecord, setSelectedRecord] = useState<IComponentApi>(DEFAULT_VALUES);
+  const [currentVersion, setCurrentVersion] = useState('V2');
 
   // 🧠 Redux
-  const reduxComponent = useSelector(
-    (state: RootState) => state.currentComponent.currentComponent
-  );
+  const reduxComponent = useSelector((state: RootState) => state.currentComponent.currentComponent);
 
   const locationState = location.state as IComponentApi | null;
 
@@ -138,8 +133,8 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   } = componentData ?? {};
 
   const isWipComponent = useMemo(
-    () => location.pathname.split("/").pop() === "Wipcomponent",
-    [location.pathname]
+    () => location.pathname.split('/').pop() === 'Wipcomponent',
+    [location.pathname],
   );
 
   const hasLinks = Boolean(figmaLink || storybookLink);
@@ -147,9 +142,7 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   // 🎬 Event handlers
   const toggleModal = useCallback(() => {
     setModalVisibility((prev) =>
-      prev === MODAL_VISIBILITY.HIDE
-        ? MODAL_VISIBILITY.SHOW
-        : MODAL_VISIBILITY.HIDE
+      prev === MODAL_VISIBILITY.HIDE ? MODAL_VISIBILITY.SHOW : MODAL_VISIBILITY.HIDE,
     );
   }, []);
 
@@ -174,9 +167,7 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
       <header className="flex flex-row place-content-between items-start">
         <div className="flex flex-col gap-2">
           {category && (
-            <small className="text-sm text-primary-blue block font-bold">
-              {category}
-            </small>
+            <small className="text-sm text-primary-blue block font-bold">{category}</small>
           )}
 
           <h1 className="font-bold text-3xl mb-3 flex items-center gap-2">
@@ -201,25 +192,16 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
             <MscStatusComponentBar id={id} stats={statuses ?? []} />
           )}
 
-          {hasLinks && (
-            <Links storybookLink={storybookLink} figmaLink={figmaLink} />
-          )}
+          {hasLinks && <Links storybookLink={storybookLink} figmaLink={figmaLink} />}
 
           {atomicType && (
             <div className="flex items-center gap-2 mb-4 text-gray-500">
-              <FontAwesomeIcon
-                icon={getCategoryIcon(category)}
-                className="text-sm"
-              />
-              <span className="text-sm capitalize font-medium">
-                {atomicType}
-              </span>
+              <FontAwesomeIcon icon={getCategoryIcon(category)} className="text-sm" />
+              <span className="text-sm capitalize font-medium">{atomicType}</span>
             </div>
           )}
 
-          <p className="mb-4">
-            {description || "This component doesn't have any description yet"}
-          </p>
+          <p className="mb-4">{description || "This component doesn't have any description yet"}</p>
         </div>
 
         <select
@@ -254,14 +236,14 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 
       <section className="pb-4">
         {children ? (
-          currentVersion === "V2" ? (
+          currentVersion === 'V2' ? (
             <div key={currentVersion}>{children}</div>
           ) : (
             <MscTypographyPageV1 />
           )
         ) : image ? (
           <img src={image} alt={`${name} component visualization`} />
-        ) : currentVersion === "V2" ? (
+        ) : currentVersion === 'V2' ? (
           <div key={currentVersion}>{children}</div>
         ) : (
           <MscTypographyPageV1 />
