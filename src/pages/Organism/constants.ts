@@ -191,9 +191,7 @@ export const codeRecentlyViewed = `
   </div>
 `;
 export const codeBestSellers = `
-  <div
-    class="bg-white w-screen lg:w-full h-fit flex flex-col pt-4 pb-1 py-6 px-5 lg:px-6 gap-3 overflow-hidden rounded scroll-container"
-  >
+  <div class="bg-white w-screen lg:w-full h-fit flex flex-col pt-4 pb-1 py-6 px-5 lg:px-6 gap-3 overflow-hidden rounded scroll-container">
     <div class="flex flex-row justify-between items-center gap-4">
       <h3 class="text-xl font-bold text-nowrap">Best Sellers</h3>
 
@@ -201,12 +199,8 @@ export const codeBestSellers = `
     </div>
 
     <section class="relative group">
-      <article
-        class="absolute left-0 min-h-full items-center flex rounded-r z-10 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300"
-      >
-        <button
-          class="scroll-left bg-white w-9 h-32 flex items-center justify-center shadow-[4px_0px_5px_0px_rgba(0,0,0,0.25)] rounded-r -left-2 relative"
-        >
+      <article class="absolute left-0 min-h-full items-center flex rounded-r z-10 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+        <button class="scroll-left bg-white w-9 h-32 flex items-center justify-center shadow-[4px_0px_5px_0px_rgba(0,0,0,0.25)] rounded-r -left-2 relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 320 512"
@@ -219,13 +213,9 @@ export const codeBestSellers = `
         </button>
       </article>
 
-      <div
-        class="flex flex-row justify-between gap-3 overflow-x-scroll pb-4 relative custom-scroll"
-      >
+      <div class="flex flex-row justify-between gap-3 overflow-x-scroll pb-4 relative custom-scroll">
         <!-- Item Card 1 -->
-        <article
-          class="max-w-[248px] h-fit p-4 gap-1 border rounded border-gray hover:border-transparent hover:shadow-xl transition-all duration-300"
-        >
+        <article class="max-w-[248px] h-fit p-4 gap-1 border rounded border-gray hover:border-transparent hover:shadow-xl transition-all duration-300">
           <div class="h-[88px] w-[210px] flex justify-center">
             <img src="../assets/homepage/drill.png" alt="Product Image" class="object-fit" />
           </div>
@@ -362,6 +352,70 @@ export const codeBestSellers = `
       </article>
     </section>
   </div>
+
+
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        const scrollContainers = document.querySelectorAll(
+          "div.overflow-x-scroll"
+        );
+
+        scrollContainers.forEach((scrollContainer) => {
+          const parent =
+            scrollContainer.closest("section.group") ||
+            scrollContainer.closest("div");
+
+          const btnLeft = parent.querySelector("button.scroll-left");
+          const btnRight = parent.querySelector("button.scroll-right");
+
+          const updateButtonStates = () => {
+            const maxScrollLeft =
+              scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+            const shouldHide = parent.classList.contains("group");
+
+            if (btnLeft) {
+              if (shouldHide && scrollContainer.scrollLeft <= 0) {
+                btnLeft.classList.add("opacity-0", "pointer-events-none");
+              } else {
+                btnLeft.classList.remove("opacity-0", "pointer-events-none");
+              }
+            }
+
+            if (btnRight) {
+              if (
+                shouldHide &&
+                scrollContainer.scrollLeft >= maxScrollLeft - 1
+              ) {
+                btnRight.classList.add("opacity-0", "pointer-events-none");
+              } else {
+                btnRight.classList.remove("opacity-0", "pointer-events-none");
+              }
+            }
+          };
+
+          const scrollByAmount = (amount) => {
+            scrollContainer.scrollBy({ left: amount, behavior: "smooth" });
+          };
+
+          btnLeft?.addEventListener("click", () => scrollByAmount(-300));
+          btnRight?.addEventListener("click", () => scrollByAmount(300));
+          scrollContainer?.addEventListener("scroll", updateButtonStates);
+
+          
+          updateButtonStates();
+
+          scrollContainer?.addEventListener("mouseenter", () => {
+            if (scrollContainer.scrollWidth <= scrollContainer.clientWidth)
+              return;
+            const original = scrollContainer.scrollLeft;
+            scrollContainer.scrollLeft += 1;
+            scrollContainer.scrollLeft = original;
+          });
+        });
+      });
+    </script>
+
 `;
 export const codeBrowseCategories = `
   <section class="bg-white py-6">
