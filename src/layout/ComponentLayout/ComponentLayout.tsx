@@ -173,6 +173,14 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
           <h1 className="font-bold text-3xl mb-3 flex items-center gap-2">
             {isWipComponent && <span>WIP: </span>}
             {name}
+            <span className="bg-primary-blue border border-brand-subtle text-white text-xs font-medium px-1.5 py-0.5 rounded-full">
+              {atomicType && (
+                <div className="flex items-center gap-2 p-1">
+                  <FontAwesomeIcon icon={getCategoryIcon(category)} className="text-sm" />
+                  {atomicType}
+                </div>
+              )}
+            </span>
             {isAuthenticated && (
               <button
                 onClick={handleEdit}
@@ -193,13 +201,6 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
           )}
 
           {hasLinks && <Links storybookLink={storybookLink} figmaLink={figmaLink} />}
-
-          {atomicType && (
-            <div className="flex items-center gap-2 mb-4 text-gray-500">
-              <FontAwesomeIcon icon={getCategoryIcon(category)} className="text-sm" />
-              <span className="text-sm capitalize font-medium">{atomicType}</span>
-            </div>
-          )}
 
           <p className="mb-4">{description || "This component doesn't have any description yet"}</p>
         </div>
