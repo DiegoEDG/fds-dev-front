@@ -53,6 +53,7 @@ import TemplatesPage from '../pages/Templates/TemplatesPage';
 import BadgePage from '../pages/Atom/BadgePage';
 import RatingPage from '../pages/Atom/RatingPage';
 import SpecificationsTablePage from '../pages/Organism/SpecificationsTablePage';
+import DocumentsSectionPage from '../pages/Organism/DocumentsSectionPage';
 
 export const routesIndex = [
   {
@@ -159,6 +160,10 @@ export const routesIndex = [
       {
         path: 'SpecificationsTable',
         element: <SpecificationsTablePage />,
+      },
+      {
+        path: 'DocumentsSection',
+        element: <DocumentsSectionPage />,
       },
       {
         path: 'Shadows',
