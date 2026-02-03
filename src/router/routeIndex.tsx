@@ -52,6 +52,7 @@ import PagePage from '../pages/Page/PagePage';
 import TemplatesPage from '../pages/Templates/TemplatesPage';
 import BadgePage from '../pages/Atom/BadgePage';
 import RatingPage from '../pages/Atom/RatingPage';
+import SpecificationsTablePage from '../pages/Organism/SpecificationsTablePage';
 
 export const routesIndex = [
   {
@@ -154,6 +155,10 @@ export const routesIndex = [
       {
         path: 'Rating',
         element: <RatingPage />,
+      },
+      {
+        path: 'SpecificationsTable',
+        element: <SpecificationsTablePage />,
       },
       {
         path: 'Shadows',

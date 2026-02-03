@@ -45,3 +45,97 @@ export const codeRating = `<div class="flex items-center gap-1">
 
   <span class="text-sm">(4.5)</span>
 </div>`;
+
+export const codeSpecificationsTable = `<p class="font-bold text-xl mb-2">Specifications</p>
+
+<table
+  id="specificationsTable"
+  class="table-auto w-full border border-collapse text-sm mb-3"
+>
+  <tr>
+    <td class="border px-4 py-1 w-1/2">Primary Material</td>
+    <td class="border px-4 py-1 w-1/2">Nitrile</td>
+  </tr>
+  <tr>
+    <td class="border px-4 py-1 w-1/2">Thickness (mil)</td>
+    <td class="border px-4 py-1 w-1/2">2.5</td>
+  </tr>
+  <tr>
+    <td class="border px-4 py-1 w-1/2">Grip Surface</td>
+    <td class="border px-4 py-1 w-1/2">Grain (Full)</td>
+  </tr>
+  <tr>
+    <td class="border px-4 py-1 w-1/2">Grade</td>
+    <td class="border px-4 py-1 w-1/2">General Purpose</td>
+  </tr>
+  <tr>
+    <td class="border px-4 py-1 w-1/2">Cuff Type</td>
+    <td class="border px-4 py-1 w-1/2">Regular</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+
+  <tr class="hc hidden">
+    <td class="border px-4 py-1 w-1/2">Hidden Row Title</td>
+    <td class="border px-4 py-1 w-1/2">Hidden Row Spec</td>
+  </tr>
+</table>
+
+<div
+  class="w-full md:w-fit border border-blue-200 rounded text-blue-700 font-bold text-sm mb-3 py-1 px-3 flex items-center justify-center cursor-pointer"
+  onclick="dropDownOpenSpec()"
+>
+  Show all specifications
+  <svg
+    id="dropDownSpec"
+    class="ml-1 transition-all rotate-180"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13.0003 10.8333C12.766 10.8333 12.5576 10.7552 12.4014 10.5989L8.00033 6.1979L3.57324 10.5989C3.26074 10.9375 2.71387 10.9375 2.40137 10.5989C2.06283 10.2864 2.06283 9.73956 2.40137 9.42706L7.40137 4.42706C7.71387 4.08852 8.26074 4.08852 8.57324 4.42706L13.5732 9.42706C13.9118 9.73956 13.9118 10.2864 13.5732 10.5989C13.417 10.7552 13.2087 10.8333 13.0003 10.8333Z"
+      fill="#2563eb"
+    />
+  </svg>
+</div>`;
