@@ -22,11 +22,11 @@ const FeatureIcon = () => (
 const ProductFeatures: React.FC<ProductFeaturesProps> = ({
   title = 'Features & Benefits',
   features = [
-    { label: 'Biodegradale' },
-    { label: 'Biodegradale' },
-    { label: 'Biodegradale' },
-    { label: 'Biodegradale' },
-    { label: 'Biodegradale' },
+    { label: 'Biodegradable' },
+    { label: 'Biodegradable' },
+    { label: 'Biodegradable' },
+    { label: 'Biodegradable' },
+    { label: 'Biodegradable' },
   ],
   className = '',
 }) => {

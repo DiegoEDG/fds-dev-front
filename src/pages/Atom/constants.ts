@@ -182,6 +182,6 @@ export const codeProductFeatures = `<section
         />
       </svg>
     </span>
-    <p class="text-sm font-normal">Biodegradale</p>
+    <p class="text-sm font-normal">Biodegradable</p>
   </div>
 </section>`;
