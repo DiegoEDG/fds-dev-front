@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { data } from "./data";
+import React, { useEffect, useState } from 'react';
+import { data } from './data';
 interface Module {
   name: string;
   icon: string;
@@ -18,18 +18,53 @@ const FuelModules: React.FC = () => {
 
   return (
     <div className="min-h-screen text-gray-800 mb-10">
-      <h1 className="text-4xl font-bold mb-8 ">Fuel Design System Ecosystem</h1>
+      <small className="text-sm text-primary-blue block font-bold">Fuel Docs</small>
+      <h1 className="font-bold text-3xl mb-3 flex items-center gap-2">Fuel Design Ecosystem</h1>
 
-      {/* <picture>
-        <source srcSet={ecosystemMobile} media="(max-width: 640px)" />
-        <img
-          src={ecosystem}
-          alt="Ecosystem diagram"
-          className="w-full max-w-[800px] mx-auto my-10"
-        />
-      </picture> */}
+      {/* About the Ecosystem */}
+      <section id="about" className="prose max-w-none mb-10">
+        <h2 className="text-2xl font-semibold mb-3">About the Ecosystem</h2>
+        <p>
+          Our technology ecosystem is designed as a structured, scalable foundation that unifies our
+          development workflow through specialized layers—each focused on data, components,
+          automation, and operational efficiency. This ecosystem enables us to accelerate product
+          delivery, ensure consistency across projects, and support a long-term vision of
+          maintainable, future-proof software. By proposing this layered architecture, we align our
+          internal processes with modern engineering standards while empowering every team to build
+          faster, smarter, and with greater reliability.
+        </p>
+      </section>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Starting from the core */}
+      <section id="core" className="prose max-w-none mb-10">
+        <h2 className="text-2xl font-semibold mb-3">Starting from the core</h2>
+        <p>
+          UX/UI design is the heart of our ecosystem because every layer, tool, and technology
+          ultimately exists to serve the user experience. By grounding the entire architecture in
+          thoughtful, consistent design, we ensure that what we build is not only functional, but
+          intuitive, scalable, and aligned with real human needs. This core foundation allows every
+          product, component, and workflow to deliver clarity, coherence, and long-term value.
+        </p>
+      </section>
+
+      {/* Fuel Design System */}
+      <section id="design-system" className="prose max-w-none mb-10">
+        <h2 className="text-2xl font-semibold mb-3">Fuel Design System</h2>
+        <p>
+          Fuel Design System establishes a unified visual and interaction language powered entirely
+          through Figma and its advanced ecosystem of tools. Using components, variants, tokens,
+          auto-layout, design libraries, and interactive prototyping, we ensure pixel-perfect
+          consistency across every product.
+        </p>
+        <p>
+          Our methodology follows atomic design principles, scalable component architecture, strict
+          naming conventions, and continuous iteration using Figma’s collaborative workflows. This
+          foundation allows designers and developers to work in sync, accelerating delivery while
+          maintaining precision, coherence, and long-term maintainability.
+        </p>
+      </section>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
         {modules.map((mod) => (
           <div
             key={mod.name}
@@ -49,8 +84,7 @@ const FuelModules: React.FC = () => {
             </h2>
             <p className="text-gray-700 mb-3">{mod.description}</p>
             <p className="text-sm text-gray-500 mb-3">
-              <span className="text-blue-600 font-medium">Objective:</span>{" "}
-              {mod.objective}
+              <span className="text-blue-600 font-medium">Objective:</span> {mod.objective}
             </p>
             <div className="flex flex-wrap gap-2 mt-2">
               {mod.technologies.map((tech) => (
