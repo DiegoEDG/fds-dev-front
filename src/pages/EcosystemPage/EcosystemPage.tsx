@@ -96,10 +96,10 @@ const FuelModules: React.FC = () => {
                 </span>
               ))}
             </div>
-
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition my-4">
+            {/* 
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition my-4 self">
               Go to {mod.name}
-            </button>
+            </button> */}
           </div>
         ))}
       </div>
