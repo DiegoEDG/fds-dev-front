@@ -1,46 +1,45 @@
-import React, { useEffect, useRef, useState } from "react";
-import SkeletonTable from "../layout/SkeletonTable";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useAuth0 } from "@auth0/auth0-react";
-import { IComponentApi } from "../interfaces/component.interface";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
-import { removeComponent } from "../redux/slices/componentsSlice";
-import ModalForm from "../components/ModalForm";
-import { addToast, removeToast } from "../redux/slices/toastSlice";
-import { openDialog } from "../redux/slices/dialogSlice";
-import formatComponentName from "../utils/formatComponentName";
-import { NavLink, useNavigate } from "react-router-dom";
-import { createLinkPage } from "../utils/createLinkPage";
-import { getNavLinkTo } from "../utils/getNavLinkTo";
-import { routesIndex } from "../router/routeIndex";
-import { setCurrentComponent } from "../redux/slices/currentComponentSlice";
+import React, { useEffect, useRef, useState } from 'react';
+import SkeletonTable from '../layout/SkeletonTable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useAuth0 } from '@auth0/auth0-react';
+import { IComponentApi } from '../interfaces/component.interface';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../redux/store';
+import { removeComponent } from '../redux/slices/componentsSlice';
+import ModalForm from '../components/ModalForm';
+import { addToast, removeToast } from '../redux/slices/toastSlice';
+import { openDialog } from '../redux/slices/dialogSlice';
+import formatComponentName from '../utils/formatComponentName';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { createLinkPage } from '../utils/createLinkPage';
+import { getNavLinkTo } from '../utils/getNavLinkTo';
+import { routesIndex } from '../router/routeIndex';
+import { setCurrentComponent } from '../redux/slices/currentComponentSlice';
 
 const defaultValuesEmpty = {
-  id: Number(""),
-  name: "",
-  category: "",
-  comment: "",
-  createdAt: "",
-  updatedAt: "",
+  id: Number(''),
+  name: '',
+  category: '',
+  comment: '',
+  createdAt: '',
+  updatedAt: '',
   statuses: [
     {
-      guidelines: "",
-      figma: "",
-      storybook: "",
-      cdn: "",
+      guidelines: '',
+      figma: '',
+      storybook: '',
+      cdn: '',
     },
   ],
   atomicType: null,
 };
 
 const ComponentStatus: React.FC = () => {
-  const [triggerModal, setTriggerModal] = useState("hidden");
+  const [triggerModal, setTriggerModal] = useState('hidden');
   const { isAuthenticated } = useAuth0();
-  const [selectedRecord, setSelectedRecord] =
-    useState<IComponentApi>(defaultValuesEmpty);
-  const [modalText, setModalText] = useState({ buttonOne: "", title: "" });
+  const [selectedRecord, setSelectedRecord] = useState<IComponentApi>(defaultValuesEmpty);
+  const [modalText, setModalText] = useState({ buttonOne: '', title: '' });
   const [showSecondButton, setShowSecondButton] = useState(false);
   const firstButtonRef = useRef(null);
   const componentsApiData = useSelector((state: RootState) => state.components);
@@ -52,7 +51,7 @@ const ComponentStatus: React.FC = () => {
       ([entry]) => {
         setShowSecondButton(!entry.isIntersecting);
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
     if (firstButtonRef.current) {
@@ -78,29 +77,45 @@ const ComponentStatus: React.FC = () => {
     try {
       dispatch(
         openDialog({
-          title: "Are you sure?",
-          text: "Do you really want to delete this component?",
+          title: 'Are you sure?',
+          text: 'Do you really want to delete this component?',
           onConfirm: () => {
             dispatch(removeComponent(component)).unwrap();
             setTimeout(() => {
-              showToast("success", "Component removed");
+              showToast('success', 'Component removed');
             }, 300);
           },
-        })
+        }),
       );
     } catch (error) {
-      console.error("Failed to delete component:", error);
+      console.error('Failed to delete component:', error);
     }
   };
 
   const toggleModal = () => {
-    setTriggerModal((prev) => (prev === "hidden" ? "" : "hidden"));
+    setTriggerModal((prev) => (prev === 'hidden' ? '' : 'hidden'));
   };
 
   const handleEdit = (component: IComponentApi) => {
     setSelectedRecord(component);
     toggleModal();
   };
+
+  const visibleComponentsCount = (componentsApiData ?? []).reduce((count, category) => {
+    const visibleInCategory = category.components.reduce((innerCount, component) => {
+      const formattedName = createLinkPage(component.name);
+      const routeExists = routesIndex[1].children?.some((route) => route.path === formattedName);
+      const navTo = routeExists ? `/docs/${formattedName}` : `/docs/WipComponent/${formattedName}`;
+
+      if (!isAuthenticated && navTo.includes('/docs/WipComponent/')) {
+        return innerCount;
+      }
+
+      return innerCount + 1;
+    }, 0);
+
+    return count + visibleInCategory;
+  }, 0);
 
   return (
     <main className="relative pb-4 mx-auto container">
@@ -115,7 +130,8 @@ const ComponentStatus: React.FC = () => {
       </small>
       <br />
       <small className="text-sm">
-        Components count: <strong>23</strong>
+        Components count:
+        <strong>{visibleComponentsCount}</strong>
       </small>
 
       <div className="flex flex-col items-start lg:flex-row lg:items-center justify-between">
@@ -136,7 +152,7 @@ const ComponentStatus: React.FC = () => {
               ref={firstButtonRef}
               className="msc-btn msc-btn-blue-solid msc-btn-icon ml-0 mt-5 items-center gap-2"
               onClick={() => {
-                setModalText({ buttonOne: "Add", title: "Add new component" });
+                setModalText({ buttonOne: 'Add', title: 'Add new component' });
                 toggleModal();
               }}
             >
@@ -149,8 +165,8 @@ const ComponentStatus: React.FC = () => {
                 className="msc-btn msc-btn-blue-solid msc-btn-icon w-fit min-w-fit p-3 fixed bottom-5 right-5"
                 onClick={() => {
                   setModalText({
-                    buttonOne: "Add",
-                    title: "Add new component",
+                    buttonOne: 'Add',
+                    title: 'Add new component',
                   });
                   toggleModal();
                 }}
@@ -215,27 +231,21 @@ const ComponentStatus: React.FC = () => {
                     .map((component, idx) => {
                       const formattedName = createLinkPage(component.name);
                       const routeExists = routesIndex[1].children?.some(
-                        (route) => route.path === formattedName
+                        (route) => route.path === formattedName,
                       );
                       const navTo = routeExists
                         ? `/docs/${formattedName}`
                         : `/docs/WipComponent/${formattedName}`;
 
-                      if (
-                        !isAuthenticated &&
-                        navTo.includes("/docs/WipComponent/")
-                      ) {
+                      if (!isAuthenticated && navTo.includes('/docs/WipComponent/')) {
                         return null;
                       }
 
                       return (
                         <tr
                           key={idx + component.name}
-                          className={`${
-                            idx % 2 === 0 ? "bg-white" : "bg-slate-100"
-                          } ${
-                            !isAuthenticated &&
-                            navTo.includes("/docs/WipComponent/")
+                          className={`${idx % 2 === 0 ? 'bg-white' : 'bg-slate-100'} ${
+                            !isAuthenticated && navTo.includes('/docs/WipComponent/')
                           }`}
                         >
                           <th
@@ -245,9 +255,7 @@ const ComponentStatus: React.FC = () => {
                             <NavLink
                               key={idx}
                               className={({ isActive }) =>
-                                isActive
-                                  ? "font-bold text-primary-blue ml-5"
-                                  : "font-bold ml-5"
+                                isActive ? 'font-bold text-primary-blue ml-5' : 'font-bold ml-5'
                               }
                               to={getNavLinkTo(component)}
                               onClick={(event) => {
@@ -262,18 +270,12 @@ const ComponentStatus: React.FC = () => {
                           <td className="px-6 py-4 text-center">
                             {component.statuses[0].guidelines}
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            {component.statuses[0].figma}
-                          </td>
+                          <td className="px-6 py-4 text-center">{component.statuses[0].figma}</td>
                           <td className="px-6 py-4 text-center">
                             {component.statuses[0].storybook}
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            {component.statuses[0].cdn}
-                          </td>
-                          <td className="px-6 py-4 text-center">
-                            {component.comment}
-                          </td>
+                          <td className="px-6 py-4 text-center">{component.statuses[0].cdn}</td>
+                          <td className="px-6 py-4 text-center">{component.comment}</td>
                           {isAuthenticated && (
                             <td>
                               <div className="flex place-content-around items-center align-middle">
@@ -282,8 +284,8 @@ const ComponentStatus: React.FC = () => {
                                     icon={faPencil}
                                     onClick={() => {
                                       setModalText({
-                                        buttonOne: "Update",
-                                        title: "Update component",
+                                        buttonOne: 'Update',
+                                        title: 'Update component',
                                       });
                                       handleEdit(component);
                                     }}
