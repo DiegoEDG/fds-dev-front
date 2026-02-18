@@ -1,2 +1,1 @@
-export const baseUrl = "https://msc-component-status-ws.vercel.app";
-// export const baseUrl = "http://localhost:4242";
+export const baseUrl = import.meta.env.VITE_API_URL as string;
