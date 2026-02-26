@@ -1,39 +1,37 @@
-import React, { useContext, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import SidebarContext from "../context/SidebarCtx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faInbox } from "@fortawesome/free-solid-svg-icons";
-import UserSVG from "../assets/UserSVG";
-import { Link } from "react-router-dom";
-import MscLogo from "../assets/MscLogo";
-import SearchBar from "../components/SearchBar/SearchBar";
+import React, { useContext, useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import SidebarContext from '../context/SidebarCtx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faInbox } from '@fortawesome/free-solid-svg-icons';
+import UserSVG from '../assets/UserSVG';
+import { Link } from 'react-router-dom';
+import MscLogo from '../assets/MscLogo';
+import SearchBar from '../components/SearchBar/SearchBar';
 
 const Navbar: React.FC = () => {
   const context = useContext(SidebarContext);
-  const [triggerModal, setTriggerModal] = useState("hidden");
+  const [triggerModal, setTriggerModal] = useState('hidden');
 
   if (!context) {
-    throw new Error("Navbar must be used within a SidebarProvider");
+    throw new Error('Navbar must be used within a SidebarProvider');
   }
 
   const { toggleSidebar } = context;
-  const { user, isAuthenticated } = useAuth0();
-
-  const { logout } = useAuth0();
-  const { loginWithRedirect } = useAuth0();
+  const { user, logout, login } = useAuth();
+  const isAuthenticated = !!user;
 
   const handleLogout = () => {
     logout();
   };
 
   const toggleModal = () => {
-    setTriggerModal((prev) => (prev === "flex" ? "hidden" : "flex"));
+    setTriggerModal((prev) => (prev === 'flex' ? 'hidden' : 'flex'));
   };
 
   const handleLogin = () => {
-    loginWithRedirect({
+    login({
       appState: {
-        targetUrl: "/ComponentStatus",
+        targetUrl: '/ComponentStatus',
       },
     });
   };
@@ -46,9 +44,7 @@ const Navbar: React.FC = () => {
       <div className="flex flex-row gap-[1rem] sm:gap-[7rem] lg:gap-[6.6rem] xl:gap-[9.5rem] items-center">
         <Link to="/" className="sm:flex flex-col hidden">
           <MscLogo />
-          <p className="font-bold text-sm self-start hidden lg:flex">
-            Fuel Design System
-          </p>
+          <p className="font-bold text-sm self-start hidden lg:flex">Fuel Design System</p>
         </Link>
         <div className="w-[250px]">
           <SearchBar />
@@ -56,22 +52,13 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex items-center gap-5">
         {isAuthenticated && (
-          <Link
-            to={"/docs/Notifications"}
-            className="flex flex-col items-center justify-end"
-          >
-            <FontAwesomeIcon
-              icon={faInbox}
-              className="text-primary-blue size-5 self-center"
-            />
+          <Link to={'/docs/Notifications'} className="flex flex-col items-center justify-end">
+            <FontAwesomeIcon icon={faInbox} className="text-primary-blue size-5 self-center" />
             <p className="text-primary-blue font-bold">Inbox</p>
           </Link>
         )}
         {!isAuthenticated && (
-          <button
-            onClick={handleLogin}
-            className="flex flex-col items-center justify-end"
-          >
+          <button onClick={handleLogin} className="flex flex-col items-center justify-end">
             <UserSVG />
             <p className="text-primary-blue font-bold">Log In</p>
           </button>

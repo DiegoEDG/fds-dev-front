@@ -1,15 +1,13 @@
-import axios, { AxiosResponse } from "axios";
-import { IFeedback } from "../../redux/slices/feedbackSlice";
-import { baseUrl } from "..";
+import { AxiosResponse } from 'axios';
+import { IFeedback } from '../../redux/slices/feedbackSlice';
+import { api } from '../../lib/api';
 
-export const deleteFeedback = async (
-  feedback: IFeedback
-): Promise<AxiosResponse<any>> => {
+export const deleteFeedback = async (feedback: IFeedback): Promise<AxiosResponse<any>> => {
   try {
-    const response = await axios.delete(`${baseUrl}/message/${feedback.id}`);
+    const response = await api.delete(`/message/${feedback.id}`);
     return response;
   } catch (error) {
-    console.error("Error deleting feedback:", error);
+    console.error('Error deleting feedback:', error);
     throw error;
   }
 };

@@ -1,10 +1,12 @@
-import imgChevron from "../../assets/chevron-down.svg";
+import imgChevron from '../../assets/chevron-down.svg';
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
 
 export default function CategoryTags() {
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `
+        __html: sanitizeHtml(
+          `
     <div class="flex flex-col pt-4 w-full h-fit gap-4 mx-auto">
       <div
         class="border border-primary-blue_light rounded w-full py-3 gap-3 h-fit flex flex-col"
@@ -156,6 +158,7 @@ export default function CategoryTags() {
       </div>
     </div>
         `.trim(),
+        ),
       }}
     />
   );

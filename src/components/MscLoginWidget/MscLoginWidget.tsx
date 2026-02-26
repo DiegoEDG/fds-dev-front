@@ -1,54 +1,55 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import UserSVG from "../../assets/UserSVG";
-import { useState } from "react";
+import { useAuth } from '../../context/AuthContext';
+import UserSVG from '../../assets/UserSVG';
+import { useState } from 'react';
 
 interface MscLoginWidgetProps {
   className?: string;
   type?: string;
   logoutBtn?: boolean;
-  buttonType?: "outline" | "solid" | "transparent" | "solid-sm";
+  buttonType?: 'outline' | 'solid' | 'transparent' | 'solid-sm';
 }
 
 const MscLoginWidget: React.FC<MscLoginWidgetProps> = ({
-  className = "",
-  type = "widget",
+  className = '',
+  type = 'widget',
   logoutBtn = true,
-  buttonType = "outline",
+  buttonType = 'outline',
 }) => {
-  const [triggerModal, setTriggerModal] = useState("hidden");
-  const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();
+  const [triggerModal, setTriggerModal] = useState('hidden');
+  const { user, logout, login } = useAuth();
+  const isAuthenticated = !!user;
 
   const handleLogout = () => {
     logout();
   };
 
   const handleLogin = () => {
-    loginWithRedirect({
+    login({
       appState: {
-        targetUrl: "/docs",
+        targetUrl: '/docs',
       },
     });
   };
 
   const toggleWidget = () => {
-    setTriggerModal((prev) => (prev === "hidden" ? "" : "hidden"));
+    setTriggerModal((prev) => (prev === 'hidden' ? '' : 'hidden'));
   };
 
   const nonWidgetBtnClasses = (() => {
     switch (buttonType) {
-      case "solid":
-        return "msc-btn msc-btn-blue-solid";
-      case "transparent":
-        return "msc-btn msc-btn-blue-transparent";
-      case "solid-sm":
-        return "msc-btn msc-btn-blue-solid msc-btn-sm";
-      case "outline":
+      case 'solid':
+        return 'msc-btn msc-btn-blue-solid';
+      case 'transparent':
+        return 'msc-btn msc-btn-blue-transparent';
+      case 'solid-sm':
+        return 'msc-btn msc-btn-blue-solid msc-btn-sm';
+      case 'outline':
       default:
-        return "msc-btn msc-btn-blue-outline";
+        return 'msc-btn msc-btn-blue-outline';
     }
   })();
 
-  return type === "widget" ? (
+  return type === 'widget' ? (
     <div className={`flex items-center gap-2 ${className}`}>
       {!isAuthenticated ? (
         <button onClick={handleLogin} className="flex flex-col items-center">
@@ -74,21 +75,15 @@ const MscLoginWidget: React.FC<MscLoginWidgetProps> = ({
       </div>
     </div>
   ) : !isAuthenticated ? (
-    <button
-      className={`${nonWidgetBtnClasses} ${className}`}
-      onClick={handleLogin}
-    >
+    <button className={`${nonWidgetBtnClasses} ${className}`} onClick={handleLogin}>
       Login
     </button>
   ) : logoutBtn ? (
-    <button
-      className={`${nonWidgetBtnClasses} ${className}`}
-      onClick={handleLogout}
-    >
+    <button className={`${nonWidgetBtnClasses} ${className}`} onClick={handleLogout}>
       Logout
     </button>
   ) : (
-    ""
+    ''
   );
 };
 

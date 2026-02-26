@@ -1,25 +1,17 @@
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
+
 export default function RecentlyViewed() {
-  const imgDrill = new URL("../../assets/homepage/drill.png", import.meta.url)
-    .href;
-  const imgGloves = new URL("../../assets/homepage/gloves.png", import.meta.url)
-    .href;
-  const imgBattery = new URL(
-    "../../assets/homepage/battery.png",
-    import.meta.url
-  ).href;
-  const imgAC = new URL("../../assets/homepage/ac.png", import.meta.url).href;
-  const imgCompressor = new URL(
-    "../../assets/homepage/compresor.png",
-    import.meta.url
-  ).href;
-  const imgBattery2 = new URL(
-    "../../assets/homepage/battery2.png",
-    import.meta.url
-  ).href;
+  const imgDrill = new URL('../../assets/homepage/drill.png', import.meta.url).href;
+  const imgGloves = new URL('../../assets/homepage/gloves.png', import.meta.url).href;
+  const imgBattery = new URL('../../assets/homepage/battery.png', import.meta.url).href;
+  const imgAC = new URL('../../assets/homepage/ac.png', import.meta.url).href;
+  const imgCompressor = new URL('../../assets/homepage/compresor.png', import.meta.url).href;
+  const imgBattery2 = new URL('../../assets/homepage/battery2.png', import.meta.url).href;
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `
+        __html: sanitizeHtml(
+          `
     <div
       class="bg-white w-screen lg:w-full h-fit flex flex-col pt-4 pb-1 py-6 px-5 lg:px-6 gap-3 overflow-hidden rounded scroll-container"
     >
@@ -497,6 +489,7 @@ export default function RecentlyViewed() {
       </section>
     </div>
         `.trim(),
+        ),
       }}
     />
   );

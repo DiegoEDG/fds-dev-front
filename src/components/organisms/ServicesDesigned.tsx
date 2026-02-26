@@ -1,20 +1,15 @@
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
+
 export default function ServicesDesigned() {
-  const imgProcurement = new URL(
-    "../../assets/homepage/procurement.jpg",
-    import.meta.url
-  ).href;
-  const imgInventory = new URL(
-    "../../assets/homepage/inventory-management.jpg",
-    import.meta.url
-  ).href;
-  const imgSafety = new URL(
-    "../../assets/homepage/safety-service.jpg",
-    import.meta.url
-  ).href;
+  const imgProcurement = new URL('../../assets/homepage/procurement.jpg', import.meta.url).href;
+  const imgInventory = new URL('../../assets/homepage/inventory-management.jpg', import.meta.url)
+    .href;
+  const imgSafety = new URL('../../assets/homepage/safety-service.jpg', import.meta.url).href;
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `
+        __html: sanitizeHtml(
+          `
     <section
       class="mx-auto max-w-screen-2xl flex flex-col px-5 lg:px-10 2xl:px-0"
     >
@@ -95,6 +90,7 @@ export default function ServicesDesigned() {
       </div>
     </section>
         `.trim(),
+        ),
       }}
     />
   );
