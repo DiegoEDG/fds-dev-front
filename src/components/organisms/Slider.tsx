@@ -1,24 +1,15 @@
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
+
 export default function Slider() {
-  const imgSliderA = new URL(
-    "../../assets/homepage/slider-ss-test-a.jpg",
-    import.meta.url
-  ).href;
-  const imgSliderB = new URL(
-    "../../assets/homepage/slider-ss-test-b.jpg",
-    import.meta.url
-  ).href;
-  const imgSliderC = new URL(
-    "../../assets/homepage/slider-ss-test-c.jpg",
-    import.meta.url
-  ).href;
-  const imgSliderD = new URL(
-    "../../assets/homepage/slider-ss-test-dd.jpg",
-    import.meta.url
-  ).href;
+  const imgSliderA = new URL('../../assets/homepage/slider-ss-test-a.jpg', import.meta.url).href;
+  const imgSliderB = new URL('../../assets/homepage/slider-ss-test-b.jpg', import.meta.url).href;
+  const imgSliderC = new URL('../../assets/homepage/slider-ss-test-c.jpg', import.meta.url).href;
+  const imgSliderD = new URL('../../assets/homepage/slider-ss-test-dd.jpg', import.meta.url).href;
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `
+        __html: sanitizeHtml(
+          `
     <div class="flex gap-4 w-full">
       <picture>
         <source
@@ -47,6 +38,7 @@ export default function Slider() {
       </picture>
     </div>
         `.trim(),
+        ),
       }}
     />
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import SkeletonTable from '../layout/SkeletonTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth } from '../context/AuthContext';
 import { IComponentApi } from '../interfaces/component.interface';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
@@ -37,7 +37,8 @@ const defaultValuesEmpty = {
 
 const ComponentStatus: React.FC = () => {
   const [triggerModal, setTriggerModal] = useState('hidden');
-  const { isAuthenticated } = useAuth0();
+  const { user } = useAuth();
+  const isAuthenticated = !!user;
   const [selectedRecord, setSelectedRecord] = useState<IComponentApi>(defaultValuesEmpty);
   const [modalText, setModalText] = useState({ buttonOne: '', title: '' });
   const [showSecondButton, setShowSecondButton] = useState(false);

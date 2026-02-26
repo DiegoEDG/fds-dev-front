@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../assets/animation.json';
@@ -30,8 +30,8 @@ export default function Home() {
 
   // Lottie-react handles looping/autoplay via props
 
-  const { user, isAuthenticated } = useAuth0();
-
+  const { user } = useAuth();
+  const isAuthenticated = !!user;
   return (
     <>
       <header className="flex justify-between p-4 container mx-auto">

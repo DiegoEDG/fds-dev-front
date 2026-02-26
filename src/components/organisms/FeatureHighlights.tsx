@@ -1,33 +1,19 @@
-import MscInfo from "./MscInfo";
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
 
 export default function FeatureHighlights() {
-  const imgSaveOurSales = new URL(
-    "../../assets/homepage/save-our-sales.jpg",
-    import.meta.url,
-  ).href;
-  const imgExclusiveBrand = new URL(
-    "../../assets/homepage/exclusive-brand.jpg",
-    import.meta.url,
-  ).href;
-  const imgTwoIne = new URL(
-    "../../assets/homepage/two-ine.jpg",
-    import.meta.url,
-  ).href;
-  const imgRigid = new URL("../../assets/homepage/rigid.jpg", import.meta.url)
+  const imgSaveOurSales = new URL('../../assets/homepage/save-our-sales.jpg', import.meta.url).href;
+  const imgExclusiveBrand = new URL('../../assets/homepage/exclusive-brand.jpg', import.meta.url)
     .href;
-  const imgGlovesJpg = new URL(
-    "../../assets/homepage/gloves.jpg",
-    import.meta.url,
-  ).href;
-  const imgDactory = new URL(
-    "../../assets/homepage/dactory.jpg",
-    import.meta.url,
-  ).href;
+  const imgTwoIne = new URL('../../assets/homepage/two-ine.jpg', import.meta.url).href;
+  const imgRigid = new URL('../../assets/homepage/rigid.jpg', import.meta.url).href;
+  const imgGlovesJpg = new URL('../../assets/homepage/gloves.jpg', import.meta.url).href;
+  const imgDactory = new URL('../../assets/homepage/dactory.jpg', import.meta.url).href;
   return (
     <>
       <div
         dangerouslySetInnerHTML={{
-          __html: `
+          __html: sanitizeHtml(
+            `
     <section
       class="mx-auto max-w-screen-2xl flex flex-col px-5 lg:px-10 2xl:px-0"
     >
@@ -184,6 +170,7 @@ export default function FeatureHighlights() {
 
     </section>
         `.trim(),
+          ),
         }}
       />
     </>

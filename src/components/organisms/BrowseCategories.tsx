@@ -1,52 +1,23 @@
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
+
 export default function BrowseCategories() {
-  const imgMilling = new URL(
-    "../../assets/homepage/milling.jpg",
-    import.meta.url
-  ).href;
-  const imgHoleMaking = new URL(
-    "../../assets/homepage/hole-making.png",
-    import.meta.url
-  ).href;
-  const imgSafety = new URL("../../assets/homepage/safety.png", import.meta.url)
-    .href;
-  const imgAbrasives = new URL(
-    "../../assets/homepage/abrasives.png",
-    import.meta.url
-  ).href;
-  const imgIndexable = new URL(
-    "../../assets/homepage/indexable.png",
-    import.meta.url
-  ).href;
-  const imgPowerTools = new URL(
-    "../../assets/homepage/power-tools.png",
-    import.meta.url
-  ).href;
-  const imgHose = new URL("../../assets/homepage/hose.png", import.meta.url)
-    .href;
-  const imgHandTools = new URL(
-    "../../assets/homepage/hand-tools.png",
-    import.meta.url
-  ).href;
-  const imgClamping = new URL(
-    "../../assets/homepage/clamping.png",
-    import.meta.url
-  ).href;
-  const imgFasteners = new URL(
-    "../../assets/homepage/fasteners.png",
-    import.meta.url
-  ).href;
-  const imgJanitorial = new URL(
-    "../../assets/homepage/janitorial.png",
-    import.meta.url
-  ).href;
-  const imgLighting = new URL(
-    "../../assets/homepage/lighting.png",
-    import.meta.url
-  ).href;
+  const imgMilling = new URL('../../assets/homepage/milling.jpg', import.meta.url).href;
+  const imgHoleMaking = new URL('../../assets/homepage/hole-making.png', import.meta.url).href;
+  const imgSafety = new URL('../../assets/homepage/safety.png', import.meta.url).href;
+  const imgAbrasives = new URL('../../assets/homepage/abrasives.png', import.meta.url).href;
+  const imgIndexable = new URL('../../assets/homepage/indexable.png', import.meta.url).href;
+  const imgPowerTools = new URL('../../assets/homepage/power-tools.png', import.meta.url).href;
+  const imgHose = new URL('../../assets/homepage/hose.png', import.meta.url).href;
+  const imgHandTools = new URL('../../assets/homepage/hand-tools.png', import.meta.url).href;
+  const imgClamping = new URL('../../assets/homepage/clamping.png', import.meta.url).href;
+  const imgFasteners = new URL('../../assets/homepage/fasteners.png', import.meta.url).href;
+  const imgJanitorial = new URL('../../assets/homepage/janitorial.png', import.meta.url).href;
+  const imgLighting = new URL('../../assets/homepage/lighting.png', import.meta.url).href;
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `
+        __html: sanitizeHtml(
+          `
     <section class="bg-white py-6">
       <div
         class="mx-auto max-w-screen-2xl px-5 lg:px-10 2xl:px-0 flex flex-col"
@@ -247,6 +218,7 @@ export default function BrowseCategories() {
       </div>
     </section>
         `.trim(),
+        ),
       }}
     />
   );

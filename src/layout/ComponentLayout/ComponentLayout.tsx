@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth } from '../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPencil,
@@ -106,7 +106,8 @@ export const ComponentLayout: React.FC<ComponentLayoutProps> = ({
 }) => {
   // 🪝 Hooks
   const location = useLocation();
-  const { isAuthenticated } = useAuth0();
+  const { user } = useAuth();
+  const isAuthenticated = !!user;
 
   // 🏷️ State
   const [modalVisibility, setModalVisibility] = useState<'' | 'hidden'>(MODAL_VISIBILITY.HIDE);

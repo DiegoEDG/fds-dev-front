@@ -1,10 +1,13 @@
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
+
 export default function TestimonialSection() {
   const imgLogo = new URL('../../assets/homepage/logo-lon.png', import.meta.url).href;
   const imgTestimonial = new URL('../../assets/homepage/testimonial.png', import.meta.url).href;
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `
+        __html: sanitizeHtml(
+          `
     <section
       id="parallax-section"
       class="bg-white rounded pt-16 pb-8 lg:py-16 sm:mx-5 lg:mx-10 2xl:mx-auto mt-4 max-w-screen-2xl overflow-hidden relative"
@@ -113,6 +116,7 @@ export default function TestimonialSection() {
       </div>
     </section>
         `.trim(),
+        ),
       }}
     />
   );

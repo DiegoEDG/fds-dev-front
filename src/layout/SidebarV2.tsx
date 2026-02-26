@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth } from '../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
@@ -33,7 +33,8 @@ import SkeletonMenu from './SkeletonMenu';
 
 const SidebarV2: React.FC = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useAuth0();
+  const { user } = useAuth();
+  const isAuthenticated = !!user;
 
   const componentsApiData = useSelector((state: RootState) => state.components);
 
