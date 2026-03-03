@@ -1,12 +1,12 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "https://fds-dev-back.vercel.app/:path*"
+      "src": "/api/(.*)",
+      "dest": "https://fds-dev-back.vercel.app/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
