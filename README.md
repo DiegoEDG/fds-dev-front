@@ -25,7 +25,7 @@ Before you begin, ensure that the following are installed on your system:
    ```bash
    cp .env.example .env
    ```
-   Update the variables in `.env` with the backend API URL and Auth0 credentials.
+   Ensure `VITE_API_URL` is set to `/api` to utilize the local Vite proxy or Vercel `vercel.json` rewrites. Update Auth0 credentials as needed.
 
 ### Running the Application
 
@@ -49,7 +49,7 @@ The application will be accessible at [http://localhost:5173](http://localhost:5
 
 The frontend requires the following variables in `.env`:
 
-- `VITE_API_URL`: The URL of the backend API (e.g., `http://localhost:4242`).
+- `VITE_API_URL`: The URL of the backend API. **Must be `/api`** to utilize the Vite proxy (dev) and Vercel rewrite (prod) to prevent third-party cookie blocking.
 - `VITE_AUTH0_DOMAIN`: Your Auth0 domain.
 - `VITE_AUTH0_CLIENT_ID`: Your Auth0 client ID.
 - `VITE_AUTH0_AUDIENCE`: Your Auth0 API identifier.
